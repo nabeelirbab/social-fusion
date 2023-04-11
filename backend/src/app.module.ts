@@ -15,6 +15,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import mailConfig from '@config/mailConfig';
 import jwtConfig from '@config/jwtConfig';
+import { FacebookModule } from './modules/facebook/facebook.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import jwtConfig from '@config/jwtConfig';
     }),
     AuthModule,
     UserModule,
+    FacebookModule,
   ],
   controllers: [],
   providers: [],

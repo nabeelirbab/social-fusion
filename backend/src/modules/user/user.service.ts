@@ -42,4 +42,23 @@ export class UserService {
     admin.setPassword(hashedPassword);
     this.userRepository.save(admin);
   }
+
+  async createOrUpdateUser(profileData: any) {
+    const { id, name, email, picture } = profileData;
+    const user = await this.userRepository.findOne({
+      where: { email },
+    });
+    if (user) {
+      console.log('hh', user);
+      // return await this.userRepository.save(user);
+    } else {
+      const newUser = new User();
+      console.log('newuser');
+      // newUser.facebookId = id;
+      // newUser.name = name;
+      // newUser.email = email;
+      // newUser.pictureUrl = picture.data.url;
+      // return await this.userRepository.save(newUser);
+    }
+  }
 }
