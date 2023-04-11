@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      
+      "@config": [
+        "src/config"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@lib/constants": [
+        "libs/constants/src"
+      ],
+      "@lib/constants/*": [
+        "libs/constants/src/*"
+      ],
+      "@lib/dtos": [
+        "libs/dtos/src"
+      ],
+      "@lib/dtos/*": [
+        "libs/dtos/src/*"
+      ],
+      "@lib/types": [
+        "libs/types/src"
+      ],
+      "@lib/types/*": [
+        "libs/types/src/*"
+      ],
+      "@lib/utils": [
+        "libs/utils/src"
+      ],
+      "@lib/utils/*": [
+        "libs/utils/src/*"
+      ]
+    }
+  }
+}
