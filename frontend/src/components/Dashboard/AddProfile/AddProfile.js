@@ -2,8 +2,19 @@ import React from "react";
 import "./AddProfile.css";
 import FbImg from "../../../images/fb.png"
 import AddIcon from "../../../images/add.png"
+import FacebookLoginButton from "../../Facebook/facebook-login";
 
 const AddProfile = () => {
+
+   const handleLoginSuccess = (response) => {
+    console.log('Facebook Login Success:', response);
+    // You can call your API to connect the Facebook account here
+  };
+
+  const handleLoginFailure = () => {
+    console.log('Facebook Login Failure');
+  };
+
   return (
     <>
       <div className="addprofile-main">
@@ -17,7 +28,7 @@ const AddProfile = () => {
                 <img src={FbImg} alt=""/>
                 <img src={AddIcon} alt=""/>
             </div>
-            <p>Facebook <br/>Profile</p>
+            <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>
         </div>
       </div>
     </>

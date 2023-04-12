@@ -5,6 +5,7 @@ import {
   UpdateDateColumn,
   Index,
   PrimaryGeneratedColumn,
+  OneToOne,
 } from 'typeorm';
 import {
   IUserParams,
@@ -13,6 +14,7 @@ import {
   UserRoleEnum,
   SocialProviderEnum,
 } from '@lib/types';
+import { Facebook } from 'src/modules/facebook/entities/facebook.entity';
 @Entity({ name: `user` })
 export class User implements IUser {
   constructor(params?: IUserParams) {
@@ -67,6 +69,12 @@ export class User implements IUser {
     default: true,
   })
   disabled?: boolean;
+
+  @OneToOne(() => Facebook, (fb) => fb.user, {
+    cascade: true,
+    eager: true,
+  })
+  facebook: Facebook;
 
   @Column()
   @CreateDateColumn()
