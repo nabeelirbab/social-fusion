@@ -3,9 +3,15 @@ import "./Login.css";
 import LoginImg from "../../../images/login-img.png";
 import FbIcon from "../../../images/fb-vector.png";
 import { useState } from "react";
-
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [credentials, setCredentials] = useState({
+    email:'',
+    password:''
+  });
+   const navigate = useNavigate();
+  const baseUrl='http://localhost:3300/api'
 
   function validateEmail(email) {
     const regex = /\S+@\S+\.\S+/;
@@ -14,12 +20,33 @@ const Login = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (validateEmail(email)) {
-      console.log("Email is Valid");
-      setEmail("");
+    if (validateEmail(credentials.email)) {
+      console.log(credentials);
+      // setEmail("");
+      setCredentials({
+        email: credentials.email,
+        password: credentials.password
+      })
+      handleLogin()
+      setCredentials({
+        email: '',
+        password:''
+      })
     } else {
       alert("Please enter a valid email address.");
     }
+  }
+  const handleLogin=async ()=> {
+    const res =await axios.post(`${baseUrl}/auth/login`, credentials)
+    const data = res.data
+    if (data) {
+      const accessToken= data.access_token
+      const user = data.user
+      localStorage.setItem('user',JSON.stringify(user))
+      localStorage.setItem('token', accessToken)
+      navigate('/addprofile')
+    }
+
   }
   
   return (
@@ -41,13 +68,13 @@ const Login = () => {
           <h1>Social Fusion</h1>
           <h2>Login</h2>
         </div>
-        <form className="form-main" onSubmit={handleSubmit}>
+        <form className="form-main" >
           <div style={{ marginTop: "20px" }}>
             <label>Business Email</label> <br />
             <input
               type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={credentials.email}
+              onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
               placeholder="name@gmail.com"
             />
           </div>
@@ -57,14 +84,14 @@ const Login = () => {
               <a href="./dasd">Forgot Password ?</a>
             </div>
             <br />
-            <input placeholder="******" />
+            <input placeholder="password" type="password" value={credentials.password} onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}/>
           </div>
           <button className="login-btn" onClick={handleSubmit}>
             Login
           </button>
           <span>or</span>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <button className="fb-btn">
+            <button className="fb-btn" onClick={handleLogin}>
               <img src={FbIcon} alt="" />
               <p>Login with Facebook</p>
             </button>

@@ -45,6 +45,7 @@ export class AuthController {
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiResponse({ status: 404, description: 'User not found!' })
   async Login(@Body() loginDto: UserRegisterRequestDto) {
+    console.log(loginDto);
     return await this.authService.login(loginDto);
   }
 
