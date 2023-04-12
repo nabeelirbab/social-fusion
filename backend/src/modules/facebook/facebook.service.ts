@@ -42,4 +42,24 @@ export class FacebookService {
     await this.fbRepository.save(facebook);
     return { success: true };
   }
+  async connectStatus(token: string) {
+    try {
+      const decoded = await this.helper.decode(token as string); // verify access token and get user from db
+      const user = decoded ? await this.helper.validateUser(decoded) : null;
+      if (!user) {
+        throw new HttpException('User not found!', HttpStatus.NOT_FOUND);
+      }
+      const existingProfile = await this.userRepository.findOne({
+        where: { email: user.email },
+        relations: ['facebook'],
+      });
+      if (existingProfile.facebook) {
+        return { success: true };
+      } else {
+        return { success: false };
+      }
+    } catch (error) {
+      throw new HttpException('token not valid!', HttpStatus.BAD_REQUEST);
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import "./AddProfile.css";
 import FbImg from "../../../images/fb.png"
 import AddIcon from "../../../images/add.png"
@@ -10,10 +10,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddProfile = () => {
   const baseUrl='http://localhost:3300/api'
   const navigate = useNavigate();
+  const [connectStatus,setConnectStatus] = useState(false)
    const accessToken = localStorage.getItem('token');
    const handleLoginSuccess = (response) => {
      console.log('Facebook Login Success:', response);
-      axios.post(`${baseUrl}/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email },{
+      axios.post(`${baseUrl}/facebook/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email },{
         headers: {
           token: accessToken
         }
@@ -49,7 +50,23 @@ const AddProfile = () => {
       };
     }
   };
-
+  const getProfileStatus = () => {
+     axios.get(`${baseUrl}/facebook/connect-profile-status`, {
+      headers: {
+        token: accessToken
+      }
+    }).then((res) => {
+      console.log(res);
+      setConnectStatus(res.data.success)
+      return res.data.success
+    })
+    .catch((error) => {
+      console.log('something went wrong', error);
+    });
+  }
+  useEffect(() => {
+    getProfileStatus()
+  },[])
   return (
     <>
       <div className="addprofile-main">
@@ -61,10 +78,11 @@ const AddProfile = () => {
 
         <div className="ap-card">
             <div className="card-inner">
-                <img src={FbImg} alt=""/>
-                <img src={AddIcon} alt=""/>
+                {/* <img src={FbImg} alt=""/>
+                <img src={AddIcon} alt=""/> */}
+            {!connectStatus ? <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>: 'Connected with facebook'}
+            
             </div>
-            <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>
         </div>
       </div>
     </>

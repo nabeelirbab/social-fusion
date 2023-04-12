@@ -12,7 +12,7 @@ import { Request } from 'express';
 import { FacebookService } from './facebook.service';
 import { UserService } from '../user/user.service';
 
-@Controller()
+@Controller('facebook')
 export class FacebookController {
   constructor(
     private readonly facebookService: FacebookService,
@@ -25,5 +25,10 @@ export class FacebookController {
     @Headers('token') token: string
   ): Promise<any> {
     return await this.facebookService.connectFacebook(data, token);
+  }
+
+  @Get('connect-profile-status')
+  async connectStatus(@Headers('token') token: string): Promise<any> {
+    return await this.facebookService.connectStatus(token);
   }
 }
