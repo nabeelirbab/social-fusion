@@ -18,8 +18,6 @@ const SignUp = () => {
      event.preventDefault();
      if (credentials.email === businessEmail) {
        if (validateCredentials(credentials)) {
-      console.log(credentials);
-      // setEmail("");
       setCredentials({
         email: credentials.email,
         password: credentials.password
@@ -44,7 +42,6 @@ const SignUp = () => {
      try{
        const res = await axios.post(`${baseUrl}/auth/register`, credentials)
        if (res.data) {
-         console.log(res.data)
          toast.success(`${res.data.message}`)
        }
      }

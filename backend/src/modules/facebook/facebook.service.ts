@@ -4,6 +4,7 @@ import { User } from '../user/entities/user.entity';
 import { Repository } from 'typeorm';
 import { Facebook } from './entities/facebook.entity';
 import { AuthHelper } from '../auth/auth.helper';
+import { FacebookConnectDto } from '@lib/dtos';
 
 @Injectable()
 export class FacebookService {
@@ -15,11 +16,7 @@ export class FacebookService {
   private readonly helper: AuthHelper;
 
   async connectFacebook(
-    {
-      facebookId,
-      accessToken,
-      email,
-    }: { facebookId: string; accessToken: string; email: string },
+    { facebookId, accessToken, email }: FacebookConnectDto,
     token: string
   ): Promise<any> {
     const decoded = await this.helper.decode(token as string); // verify access token and get user from db

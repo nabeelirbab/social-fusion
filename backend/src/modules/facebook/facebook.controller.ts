@@ -1,3 +1,4 @@
+import { FacebookConnectDto } from '@lib/dtos';
 import {
   Body,
   Controller,
@@ -21,7 +22,7 @@ export class FacebookController {
 
   @Post('connect-facebook')
   async connectFacebook(
-    @Body() data: any,
+    @Body() data: FacebookConnectDto,
     @Headers('token') token: string
   ): Promise<any> {
     return await this.facebookService.connectFacebook(data, token);

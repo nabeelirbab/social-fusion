@@ -13,18 +13,15 @@ const AddProfile = () => {
   const [connectStatus,setConnectStatus] = useState(false)
    const accessToken = localStorage.getItem('token');
    const handleLoginSuccess = (response) => {
-     console.log('Facebook Login Success:', response);
       axios.post(`${baseUrl}/facebook/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email },{
         headers: {
           token: accessToken
         }
 })
         .then((res) => {
-          console.log(res);
           toast.success('profile successfully added!')
     })
     .catch((error) => {
-      console.log('Error connecting Facebook account:', error);
       if (error.message === 'Request failed with status code 409') {
         toast.error('Profile Already Added')
       }
@@ -36,7 +33,7 @@ const AddProfile = () => {
   };
 
   const handleLoginFailure = () => {
-    console.log('Facebook Login Failure');
+    toast.error('Login failed')
   };
 
   const logout = () => {

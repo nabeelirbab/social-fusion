@@ -18,8 +18,6 @@ const Login = () => {
   function handleSubmit(event) {
     event.preventDefault();
     if (validateCredentials(credentials)) {
-      console.log(credentials);
-      // setEmail("");
       setCredentials({
         email: credentials.email,
         password: credentials.password
@@ -40,7 +38,6 @@ const Login = () => {
       navigate('/addprofile')
     }
     catch (error) {
-      console.log(error.response.data.message)
       if(error.response.data.message==='User needs Verification')
         toast.error('User needs Verification!')
       if (error.response.data.message === 'Password Incorrect')
