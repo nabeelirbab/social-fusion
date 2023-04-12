@@ -13,6 +13,16 @@ export class Facebook {
   @PrimaryGeneratedColumn()
   readonly id: string;
 
+  @Column({ nullable: true })
+  facebookAccessToken: string;
+
+  @Column({ nullable: true })
+  facebookId: string;
+
+  @OneToOne(() => User, (user) => user.facebook, { onDelete: 'CASCADE' })
+  @JoinColumn()
+  user: User;
+
   @Column()
   @CreateDateColumn()
   readonly createdAt: Date;
@@ -20,10 +30,6 @@ export class Facebook {
   @Column()
   @UpdateDateColumn()
   readonly updatedAt: Date;
-
-  @OneToOne(() => User, (user) => user.facebook, { onDelete: 'CASCADE' })
-  @JoinColumn()
-  user: User;
 
   // Methods
 }
