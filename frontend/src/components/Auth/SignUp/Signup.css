@@ -1,0 +1,89 @@
+.signup-main {
+  width: 40%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.signup-inner {
+  text-align: center;
+}
+.signup-main label {
+  font-weight: 700;
+  font-size: 14px;
+}
+.forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px -18px 0px;
+}
+.forgot a {
+  color: #03b48a;
+  text-decoration: none;
+}
+.signup-main input {
+  width: 96.5%;
+  border: 1px solid #d6dae0;
+  border-radius: 4px;
+  padding: 10px;
+}
+.form-main .signup-btn {
+  border: none;
+  margin-top: 20px;
+  width: 100%;
+  background-color: #03b48a;
+  border-radius: 60px;
+  color: #ffff;
+  padding: 12px;
+  font-family: "Open Sans";
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+}
+.form-main span {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #eaecef;
+  margin-top: 10px;
+}
+.form-main .fb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-family: "Open Sans";
+  font-weight: 800;
+  font-size: 16px;
+  background: #1877f2;
+  border-radius: 60px;
+  border: none;
+  padding: 10px 70px;
+  cursor: pointer;
+}
+.fb-btn p {
+  padding-left: 10px;
+  color: white;
+  margin: 0px;
+}
+.signup {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.signup p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0px;
+}
+.signup a {
+  font-size: 16px;
+  color: rgba(3, 180, 138, 1);
+  text-decoration: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+}
