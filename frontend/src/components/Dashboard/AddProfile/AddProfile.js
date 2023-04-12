@@ -5,19 +5,33 @@ import AddIcon from "../../../images/add.png"
 import FacebookLoginButton from "../../Facebook/facebook-login";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddProfile = () => {
-const navigate=useNavigate();
+  const baseUrl='http://localhost:3300/api'
+  const navigate = useNavigate();
+   const accessToken = localStorage.getItem('token');
    const handleLoginSuccess = (response) => {
      console.log('Facebook Login Success:', response);
-      axios.post('/api/auth/connect-facebook', { facebookId: response.userID, accessToken: response.accessToken })
+      axios.post(`${baseUrl}/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email },{
+        headers: {
+          token: accessToken
+        }
+})
         .then((res) => {
-      console.log(res.json());
-      // Redirect or update the UI to show that the user has connected their Facebook account
+          console.log(res);
+          toast.success('profile successfully added!')
     })
     .catch((error) => {
       console.log('Error connecting Facebook account:', error);
+      if (error.message === 'Request failed with status code 409') {
+        toast.error('Profile Already Added')
+      }
+      else {
+        toast.error('Could not add profile')
+
+      }
     });
-    // You can call your API to connect the Facebook account here
   };
 
   const handleLoginFailure = () => {

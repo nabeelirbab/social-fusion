@@ -5,6 +5,8 @@ import FbIcon from "../../../images/fb-vector.png";
 import { useState } from "react";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { validateCredentials } from "../helperfunctions";
+import { toast } from "react-toastify";
 const Login = () => {
   const [credentials, setCredentials] = useState({
     email:'',
@@ -13,14 +15,9 @@ const Login = () => {
    const navigate = useNavigate();
   const baseUrl='http://localhost:3300/api'
 
-  function validateEmail(email) {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
-    if (validateEmail(credentials.email)) {
+    if (validateCredentials(credentials)) {
       console.log(credentials);
       // setEmail("");
       setCredentials({
@@ -28,23 +25,28 @@ const Login = () => {
         password: credentials.password
       })
       handleLogin()
-      setCredentials({
-        email: '',
-        password:''
-      })
     } else {
       alert("Please enter a valid email address.");
     }
   }
-  const handleLogin=async ()=> {
+  const handleLogin = async () => {
+    try{
     const res =await axios.post(`${baseUrl}/auth/login`, credentials)
     const data = res.data
-    if (data) {
       const accessToken= data.access_token
       const user = data.user
       localStorage.setItem('user',JSON.stringify(user))
       localStorage.setItem('token', accessToken)
       navigate('/addprofile')
+    }
+    catch (error) {
+      console.log(error.response.data.message)
+      if(error.response.data.message==='User needs Verification')
+        toast.error('User needs Verification!')
+      if (error.response.data.message === 'Password Incorrect')
+        toast.error('Password Incorrect!')
+      if (error.response.data.message === 'No user found')
+        toast.error('User Not Found!')        
     }
 
   }
@@ -68,7 +70,7 @@ const Login = () => {
           <h1>Social Fusion</h1>
           <h2>Login</h2>
         </div>
-        <form className="form-main" >
+        <form className="form-main" onSubmit={handleSubmit}>
           <div style={{ marginTop: "20px" }}>
             <label>Business Email</label> <br />
             <input
@@ -86,7 +88,7 @@ const Login = () => {
             <br />
             <input placeholder="password" type="password" value={credentials.password} onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}/>
           </div>
-          <button className="login-btn" onClick={handleSubmit}>
+          <button className="login-btn" >
             Login
           </button>
           <span>or</span>

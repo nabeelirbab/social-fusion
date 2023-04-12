@@ -27,7 +27,7 @@ import { UserRole, UserRoleEnum } from '@lib/types';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('registerUser')
+  @Post('register')
   @UseInterceptors(ClassSerializerInterceptor)
   @ApiOperation({ summary: 'Register User' })
   @ApiResponse({
@@ -45,7 +45,6 @@ export class AuthController {
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @ApiResponse({ status: 404, description: 'User not found!' })
   async Login(@Body() loginDto: UserRegisterRequestDto) {
-    console.log(loginDto);
     return await this.authService.login(loginDto);
   }
 

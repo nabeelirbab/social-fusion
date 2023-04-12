@@ -19,6 +19,9 @@ export class Facebook {
   @Column({ nullable: true })
   facebookId: string;
 
+  @Column({ nullable: true })
+  email: string;
+
   @OneToOne(() => User, (user) => user.facebook, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: User;

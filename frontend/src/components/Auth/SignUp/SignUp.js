@@ -3,11 +3,56 @@ import "./Signup.css";
 // import LoginImg from "../../../images/login-img.png";
 import FbIcon from "../../../images/fb-vector.png";
 import { useState } from "react";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { validateCredentials } from "../helperfunctions";
+import axios from 'axios'
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [confirmEmail, setConfirmEmail] = useState("")
+  const [credentials, setCredentials] = useState({
+    email:'',
+    password:''
+  });
+  const [businessEmail,setBusinessEmail] = useState('')
+  const baseUrl='http://localhost:3300/api'
+   function handleSubmit(event) {
+     event.preventDefault();
+     if (credentials.email === businessEmail) {
+       if (validateCredentials(credentials)) {
+      console.log(credentials);
+      // setEmail("");
+      setCredentials({
+        email: credentials.email,
+        password: credentials.password
+      })
+      handleSignUp()
+      setCredentials({
+        email: '',
+        password:''
+      })
+      setBusinessEmail('')
+    } else {
+      alert("Please enter a valid email address.");
+    }
+     }
+     else {
+             alert("Emails not matched");
+     }
+    
+   }
+  
+  const handleSignUp = async () => {
+     try{
+       const res = await axios.post(`${baseUrl}/auth/register`, credentials)
+       if (res.data) {
+         console.log(res.data)
+         toast.success(`${res.data.message}`)
+       }
+     }
+     catch (error) {
+       toast.error('Registration failed')
+    }
 
+  }
   return (
     <>
       {/* <div className="sidebar">
@@ -28,13 +73,13 @@ const SignUp = () => {
           <h1>Social Fusion</h1>
           <h2>Welcome Abroad</h2>
         </div>
-        <form className="form-main" >
+        <form className="form-main" onSubmit={handleSubmit}>
           <div style={{ marginTop: "20px" }}>
             <label>Business Email</label> <br />
             <input
               type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={credentials.email}
+              onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
               placeholder="name@gmail.com"
             />
           </div>
@@ -42,8 +87,8 @@ const SignUp = () => {
             <label>Confirm Business Email</label> <br />
             <input
               type="email"
-              value={email}
-              onChange={(event) => setConfirmEmail(event.target.value)}
+              value={businessEmail}
+              onChange={(e) => setBusinessEmail(e.target.value)}
               placeholder="name@gmail.com"
             />
           </div>
@@ -53,9 +98,9 @@ const SignUp = () => {
               <a href="./dasd">Forgot Password ?</a>
             </div>
             <br />
-            <input placeholder="******" />
+            <input placeholder="******"  value={credentials.password} onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}/>
           </div>
-          <button className="signup-btn" >
+          <button className="signup-btn">
             SignUp
           </button>
           <span>or</span>
