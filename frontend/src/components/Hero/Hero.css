@@ -1,3 +1,6 @@
+.hero-main {
+  padding: 100px 0px 100px 0px;
+}
 .hero-inner h1 {
   font-family: "DM Sans";
   font-weight: 700;
@@ -9,4 +12,71 @@
   font-size: 18px;
   text-align: center;
   color: #666666;
+}
+.sign-btn {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px 20px 0px;
+}
+.sign-btn button {
+  padding: 10px 40px 10px 40px;
+  background: linear-gradient(
+    180deg,
+    #ae6efe 0%,
+    #785ef9 139.76%,
+    #7155f7 220.99%
+  );
+  border-radius: 50px;
+  border: none;
+  color: #ffff;
+}
+.hero-inner span {
+  font-family: "DM Sans";
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  color: #212e44;
+}
+.img-logo {
+  display: flex;
+  justify-content: center;
+}
+.hero-inner img {
+  padding: 16px 10px 16px 10px;
+}
+.card-sec {
+  display: flex;
+  padding: 50px 0px 50px 0px;
+}
+.card-sec p {
+  display: flex;
+  align-items: center;
+  font-family: "DM Sans";
+  font-weight: 700;
+  font-size: 20px;
+  color: #323b43;
+}
+.card-sec h5 {
+    font-size: 16px;
+  padding: 6px 0px 6px 0px;
+  margin: 0px;
+}
+.card-sec span{
+    color: #697279;
+    font-size: 14px;
+}
+.text-sec{
+    padding: 30px;
+}
+.text-sec h2 {
+  font-family: "DM Sans";
+  font-weight: 700;
+  font-size: 26px;
+  text-align: center;
+}
+.text-sec p {
+  font-family: "Lexend Deca";
+  font-size: 18px;
+  text-align: center;
+  color: #697279;
 }
