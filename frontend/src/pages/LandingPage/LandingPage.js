@@ -1,12 +1,14 @@
-import React from 'react'
-import Login from '../../components/Auth/Login/Login'
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import Hero from "../../components/Hero/Hero";
 
 const LandingPage = () => {
   return (
-    <>
-    <Login/>
-    </>
-  )
-}
+    <div style={{ margin: "10px 160px 10px 160px" }}>
+      <Navbar />
+      <Hero />
+    </div>
+  );
+};
 
-export default LandingPage
+export default LandingPage;

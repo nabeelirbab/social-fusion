@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import AddProfile from "./components/Dashboard/AddProfile/AddProfile";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const router = createBrowserRouter([

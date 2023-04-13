@@ -1,0 +1,12 @@
+.hero-inner h1 {
+  font-family: "DM Sans";
+  font-weight: 700;
+  font-size: 52px;
+  text-align: center;
+}
+.hero-inner p {
+  font-family: "Lexend Deca";
+  font-size: 18px;
+  text-align: center;
+  color: #666666;
+}
