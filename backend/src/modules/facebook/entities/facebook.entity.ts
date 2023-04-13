@@ -26,6 +26,9 @@ export class Facebook {
   @JoinColumn()
   user: User;
 
+  @Column({ nullable: true })
+  accessTokenExpiresAt: Date;
+
   @Column()
   @CreateDateColumn()
   readonly createdAt: Date;

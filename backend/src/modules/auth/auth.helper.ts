@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../user/entities/user.entity';
@@ -46,7 +46,10 @@ export class AuthHelper {
   // Get User by User ID we get from decode()
   public async validateUser(decoded: any): Promise<User> {
     const user = await this.repository.findOne({ where: { id: decoded.id } });
-    delete user.password;
-    return user;
+    if (!user) throw new HttpException('Token Invalid', HttpStatus.BAD_GATEWAY);
+    else {
+      delete user.password;
+      return user;
+    }
   }
 }

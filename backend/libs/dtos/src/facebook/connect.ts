@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsString, IsEmail, MinLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  IsEmail,
+  MinLength,
+  IsNumber,
+} from 'class-validator';
 export class FacebookConnectDto {
   @IsNotEmpty()
   @IsEmail()
@@ -11,4 +17,8 @@ export class FacebookConnectDto {
   @IsNotEmpty()
   @IsString()
   accessToken: string;
+
+  @IsNotEmpty()
+  @IsNumber()
+  expiresIn: number;
 }

@@ -32,4 +32,9 @@ export class FacebookController {
   async connectStatus(@Headers('token') token: string): Promise<any> {
     return await this.facebookService.connectStatus(token);
   }
+
+  @Get('refresh-token')
+  async refresh(@Headers('token') token: string): Promise<any> {
+    return await this.facebookService.getInfo(token);
+  }
 }

@@ -12,8 +12,9 @@ const AddProfile = () => {
   const navigate = useNavigate();
   const [connectStatus,setConnectStatus] = useState(false)
    const accessToken = localStorage.getItem('token');
-   const handleLoginSuccess = (response) => {
-      axios.post(`${baseUrl}/facebook/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email },{
+  const handleLoginSuccess = (response) => {
+    console.log(response)
+      axios.post(`${baseUrl}/facebook/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email,expiresIn:response.expiresIn },{
         headers: {
           token: accessToken
         }
