@@ -33,7 +33,7 @@ const SignUp = () => {
             <label>Business Email</label> <br />
             <input
               type="email"
-              value={email}
+              value={confirmEmail}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="name@gmail.com"
             />
