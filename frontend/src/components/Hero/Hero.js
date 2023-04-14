@@ -10,6 +10,12 @@ import Analyze from "../../images/Landing/analyze.png";
 import Visual from "../../images/Landing/visual.png";
 import Schedule from "../../images/Landing/schedule.png";
 import Link from "../../images/Landing/link.png";
+import MainImg from "../../images/Landing/header-img.png";
+import DashboardImg from "../../images/Landing/dashboard-img.png";
+import Lorem1 from "../../images/Landing/lorem-1.png";
+import Lorem2 from "../../images/Landing/lorem-2.png";
+import Testimonials from "./../Testimonial/Testimonials";
+import Footer from "../../components/Footer/Footer";
 
 const Array = [
   {
@@ -68,6 +74,12 @@ const Hero = () => {
             })}
           </div>
         </div>
+      </div>
+      <div>
+        <img className="img-fluid" src={MainImg} alt="" />
+      </div>
+
+      <div className="lower-hero">
         <div className="card-sec">
           <p>Later social media management</p>
           {Array.map((card, index) => {
@@ -80,8 +92,13 @@ const Hero = () => {
             );
           })}
         </div>
+
         <div className="text-sec">
-          <h2>Lorem Ipsum is simply dummy text of the </h2>
+          <div className="text-sec-inner">
+            <img src={Lorem2} alt="" />
+            <h2>Lorem Ipsum is simply dummy text of the </h2>
+            <img src={Lorem1} alt="" />
+          </div>
           <p>
             Stay Lorem Ipsum has been the industry's standard dummy text ever{" "}
             <br />
@@ -90,8 +107,26 @@ const Hero = () => {
           </p>
         </div>
 
-        <div>
-          <div className="Lorem-sec">
+        <div className="row align-items-center mt-5 mb-5">
+          <div className="lorem-sec col-5">
+            <h4>View all social media account feed at one places</h4>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, When an{" "}
+            </p>
+            <button>Learn More</button>
+          </div>
+          <div className="lorem-img col-7">
+            <img className="img-fluid" src={DashboardImg} alt="" />
+          </div>
+        </div>
+
+        <div className="d-flex align-items-center mt-5 mb-5">
+          <div className="lorem-img col-6">
+            <img className="img-fluid" src={DashboardImg} alt="" />
+          </div>
+          <div className="lorem-sec col-5">
             <h4>View all social media account feed at one places</h4>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -101,7 +136,36 @@ const Hero = () => {
             <button>Learn More</button>
           </div>
         </div>
+
+        <div className="row align-items-center mt-5 mb-5">
+          <div className="lorem-sec col-5">
+            <h4>View all social media account feed at one places</h4>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, When an{" "}
+            </p>
+            <button>Learn More</button>
+          </div>
+          <div className="lorem-img col-7">
+            <img className="img-fluid" src={DashboardImg} alt="" />
+          </div>
+        </div>
+
+        <div className="text-sec">
+          <div className="text-sec-inner">
+            <img src={Lorem2} alt="" />
+            <h2>What our awesome customers say </h2>
+            <img src={Lorem1} alt="" />
+          </div>
+          <p>
+            Our team has a successful track record of helping brands
+            <br /> scale profitably based on high-performing strategies.
+          </p>
+        </div>
+        {/* <Testimonials/> */}
       </div>
+      <Footer />
     </>
   );
 };

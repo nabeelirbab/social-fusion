@@ -1,5 +1,6 @@
 
 .nav-main {
+  margin: 10px 160px 10px 160px;
 }
 .nav-logo {
   font-weight: 700;
@@ -24,7 +25,7 @@
   border-radius: 50px;
   border: none;
   color: white;
-  padding: 5px 30px 5px 30px;
+  padding: 8px 30px 8px 30px;
   font-family: "Arial";
   font-weight: 700;
 }

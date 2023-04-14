@@ -1,0 +1,26 @@
+.footer {
+  padding: 30px 160px 30px 160px;
+  background: #7e65fb;
+}
+.footer-inner {
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+}
+ul {
+  padding-left: 0px;
+}
+ul li {
+  list-style: none;
+  padding: 0px;
+}
+.footer-btn{
+  padding: 12px 30px;
+  background-color: #000000;
+  border-radius: 8px;
+  color: white;
+  border: none;
+}
+.sep{
+    border: 1px solid #2E4E73;;
+}

@@ -4,7 +4,7 @@ import Hero from "../../components/Hero/Hero";
 
 const LandingPage = () => {
   return (
-    <div style={{ margin: "10px 160px 10px 160px" }}>
+    <div >
       <Navbar />
       <Hero />
     </div>
