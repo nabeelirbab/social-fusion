@@ -1,6 +1,9 @@
 import React from "react";
 import "./Footer.css";
 import ArrowBtn from "../../images/Landing/arrow.png";
+import FbImg from "../../images/Landing/fb-footer.png";
+import TwitterImg from "../../images/Landing/twitter-footer.png";
+import LinkedImg from "../../images/Landing/linked-footer.png";
 
 const Footer = () => {
   return (
@@ -32,18 +35,28 @@ const Footer = () => {
             <a href="">Start Today</a>
             <img src={ArrowBtn} alt="" />
           </div> */}
-          <button className="footer-btn">Start Today
-            <img src={ArrowBtn} alt=""/>
+          <button className="footer-btn">
+            Start Today
+            <img src={ArrowBtn} alt="" />
           </button>
         </div>
       </div>
-      <div className="sep">
+      <div className="sep"></div>
+      <div className="footer-low">
+        <div>
+          <span>English</span>
+          <span>Terms & Privacy</span>
+          <span>Security</span>
+          <span>Status</span>
+          <span>©2023 SocialFusion</span>
+        </div>
+
+        <div className="footer-img">
+          <img src={FbImg} alt="" />
+          <img src={TwitterImg} alt="" />
+          <img src={LinkedImg} alt="" />
+        </div>
       </div>
-      {/* <div className="footer-low">
-        <span>English</span>
-        
-        <span>English</span>
-      </div> */}
     </div>
   );
 };

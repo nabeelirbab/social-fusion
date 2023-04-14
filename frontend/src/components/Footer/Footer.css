@@ -1,5 +1,5 @@
 .footer {
-  padding: 30px 160px 30px 160px;
+  padding: 30px 160px 20px 160px;
   background: #7e65fb;
 }
 .footer-inner {
@@ -23,4 +23,15 @@ ul li {
 }
 .sep{
     border: 1px solid #2E4E73;;
+}
+.footer-low{
+    display: flex;
+    justify-content: space-between;
+}
+.footer-img img{
+    padding: 10px;
+}
+.footer-low span{
+    color: #ffff;
+    padding: 10px 30px 10px 30px;
 }
