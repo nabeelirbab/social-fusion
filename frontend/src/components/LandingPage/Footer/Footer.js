@@ -1,9 +1,9 @@
 import React from "react";
 import "./Footer.css";
-import ArrowBtn from "../../images/Landing/arrow.png";
-import FbImg from "../../images/Landing/fb-footer.png";
-import TwitterImg from "../../images/Landing/twitter-footer.png";
-import LinkedImg from "../../images/Landing/linked-footer.png";
+import ArrowBtn from "../../../images/Landing/arrow.png";
+import FbImg from "../../../images/Landing/fb-footer.png";
+import TwitterImg from "../../../images/Landing/twitter-footer.png";
+import LinkedImg from "../../../images/Landing/linked-footer.png";
 
 const Footer = () => {
   return (

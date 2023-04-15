@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Hero from "../../components/Hero/Hero";
+import Navbar from "../../components/LandingPage/Navbar/Navbar";
+import Hero from "../../components/LandingPage/Hero/Hero";
 
 const LandingPage = () => {
   return (

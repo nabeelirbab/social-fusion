@@ -1,21 +1,21 @@
 import React from "react";
 import "./Hero.css";
-import FbLogo from "../../images/Landing/facebook-logo.png";
-import InstaLogo from "../../images/Landing/instagram-logo.png";
-import TwitterLogo from "../../images/Landing/twitter-logo.png";
-import LinkedInLogo from "../../images/Landing/linkedin-logo.png";
-import GoogleLogo from "../../images/Landing/google-logo.png";
-import YoutubeLogo from "../../images/Landing/youtube-logo.png";
-import Analyze from "../../images/Landing/analyze.png";
-import Visual from "../../images/Landing/visual.png";
-import Schedule from "../../images/Landing/schedule.png";
-import Link from "../../images/Landing/link.png";
-import MainImg from "../../images/Landing/header-img.png";
-import DashboardImg from "../../images/Landing/dashboard-img.png";
-import Lorem1 from "../../images/Landing/lorem-1.png";
-import Lorem2 from "../../images/Landing/lorem-2.png";
-import Testimonials from "./../Testimonial/Testimonials";
-import Footer from "../../components/Footer/Footer";
+import FbLogo from "../../../images/Landing/facebook-logo.png";
+import InstaLogo from "../../../images/Landing/instagram-logo.png";
+import TwitterLogo from "../../../images/Landing/twitter-logo.png";
+import LinkedInLogo from "../../../images/Landing/linkedin-logo.png";
+import GoogleLogo from "../../../images/Landing/google-logo.png";
+import YoutubeLogo from "../../../images/Landing/youtube-logo.png";
+import Analyze from "../../../images/Landing/analyze.png";
+import Visual from "../../../images/Landing/visual.png";
+import Schedule from "../../../images/Landing/schedule.png";
+import Link from "../../../images/Landing/link.png";
+import MainImg from "../../../images/Landing/header-img.png";
+import DashboardImg from "../../../images/Landing/dashboard-img.png";
+import Lorem1 from "../../../images/Landing/lorem-1.png";
+import Lorem2 from "../../../images/Landing/lorem-2.png";
+import Testimonials from "../Testimonial/Testimonials";
+import Footer from "../Footer/Footer";
 
 const Array = [
   {

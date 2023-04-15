@@ -1,6 +1,6 @@
 import React from "react";
 import Testimonial from "./Testimonials";
-import TestimonialImg from "../../images/Landing/testimonial.png"
+import TestimonialImg from "../../../images/Landing/testimonial.png"
 
 const testimonials = [
   {

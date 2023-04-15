@@ -1,8 +1,8 @@
 import React from "react";
 import "./Login.css";
-import LoginImg from "../../../images/login-img.png";
-import FbIcon from "../../../images/fb-vector.png";
 import { useState } from "react";
+import LoginImg from "../../../images/login-main.png"
+import Logo from "../../../images/logo.png"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,23 +24,12 @@ const Login = () => {
   
   return (
     <>
-      <div className="sidebar">
-        <div className="sidebar-inner">
-          <img src={LoginImg} alt="login-img" />
-          <p>
-            “We've been using Later for a little over 2 years. The visual
-            planner is one of the tools that has helped us become more efficient
-            and it's an important part of our marketing toolkit.”
-          </p>
-          <span>Cam</span>
-          <p className="img-name">Founder and CEO of GREATS</p>
-        </div>
+      <div className="sidebar col-4">
+       <div className="sidebar-inner">
+        <img className="login-img" src={LoginImg}/>
+       </div>
       </div>
-      <div className="login-main">
-        <div className="login-inner">
-          <h1>Social Fusion</h1>
-          <h2>Login</h2>
-        </div>
+      {/* <div className="login-main">    
         <form className="form-main" onSubmit={handleSubmit}>
           <div style={{ marginTop: "20px" }}>
             <label>Business Email</label> <br />
@@ -51,31 +40,15 @@ const Login = () => {
               placeholder="name@gmail.com"
             />
           </div>
-          <div>
-            <div className="forgot">
-              <label>Password</label>
-              <a href="./dasd">Forgot Password ?</a>
-            </div>
-            <br />
-            <input placeholder="******" />
-          </div>
-          <button className="login-btn" onClick={handleSubmit}>
-            Login
-          </button>
-          <span>or</span>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <button className="fb-btn">
-              <img src={FbIcon} alt="" />
-              <p>Login with Facebook</p>
-            </button>
-          </div>
-
-          <div className="signup">
-            <p>New to SocialFusion? </p>
-            <a href="/signup">Sign Up</a>
-          </div>
         </form>
-        <label />
+      </div> */}
+      <div className="login-main col-8 ">
+        <img  src={Logo} alt=""/>
+        <div className="login-inner">
+          <h5>Sign in</h5>
+          <p>If you don’t have an account, register</p>
+          <p>You can  Register here !</p>
+        </div>
       </div>
     </>
   );
