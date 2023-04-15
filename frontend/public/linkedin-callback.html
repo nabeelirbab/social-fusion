@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Callback</title>
+    <script>
+      function sendMessageToParent() {
+        const url = new URL(window.location.href);
+        const code = url.searchParams.get('code');
+console.log('jjooo')
+        if (code && window.opener && window.opener.handleLinkedInAuthorization) {
+          window.opener.handleLinkedInAuthorization({ code });
+        }
+
+        window.close();
+      }
+
+      window.addEventListener('load', sendMessageToParent);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -5,9 +5,10 @@ import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Facebook } from '../facebook/entities/facebook.entity';
+import { Linkedin } from '../linkedin/entities/linkedin.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Facebook]), AuthModule],
+  imports: [TypeOrmModule.forFeature([User, Facebook, Linkedin]), AuthModule],
   controllers: [UserController],
   providers: [UserService],
 })

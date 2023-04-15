@@ -1,4 +1,4 @@
-import { FacebookConnectDto } from '@lib/dtos';
+import { FacebookConnectDto, FacebookPostDto } from '@lib/dtos';
 import {
   Body,
   Controller,
@@ -36,5 +36,18 @@ export class FacebookController {
   @Get('refresh-token')
   async refresh(@Headers('token') token: string): Promise<any> {
     return await this.facebookService.getInfo(token);
+  }
+
+  @Get('token-info')
+  async getValidation(@Headers('token') token: string): Promise<any> {
+    return await this.facebookService.getValidAccessToken(token);
+  }
+
+  @Post('create-post')
+  async createPost(
+    @Headers('token') token: string,
+    @Body() { message }: FacebookPostDto
+  ) {
+    return await this.facebookService.createPost(token);
   }
 }

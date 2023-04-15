@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigEnum } from '@lib/types';
-
+import { HttpModule } from '@nestjs/axios';
 // config imports files
 import typeormConfig from './config/orm.config';
 import serverConfig from './config/server.config';
@@ -16,6 +16,7 @@ import { UserModule } from './modules/user/user.module';
 import mailConfig from '@config/mailConfig';
 import jwtConfig from '@config/jwtConfig';
 import { FacebookModule } from './modules/facebook/facebook.module';
+import { LinkedinModule } from './modules/linkedin/linkedin.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { FacebookModule } from './modules/facebook/facebook.module';
     AuthModule,
     UserModule,
     FacebookModule,
+    LinkedinModule,
   ],
   controllers: [],
   providers: [],

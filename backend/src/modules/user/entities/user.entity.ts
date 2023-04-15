@@ -15,6 +15,7 @@ import {
   SocialProviderEnum,
 } from '@lib/types';
 import { Facebook } from 'src/modules/facebook/entities/facebook.entity';
+import { Linkedin } from 'src/modules/linkedin/entities/linkedin.entity';
 @Entity({ name: `user` })
 export class User implements IUser {
   constructor(params?: IUserParams) {
@@ -75,6 +76,12 @@ export class User implements IUser {
     eager: true,
   })
   facebook: Facebook;
+
+  @OneToOne(() => Linkedin, (linkedin) => linkedin.user, {
+    cascade: true,
+    eager: true,
+  })
+  linkedin: Linkedin;
 
   @Column()
   @CreateDateColumn()

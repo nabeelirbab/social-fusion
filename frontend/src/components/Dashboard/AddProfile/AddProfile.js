@@ -7,10 +7,12 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Linkedin from "../../Linkedin/linkedin";
 const AddProfile = () => {
   const baseUrl='http://localhost:3300/api'
   const navigate = useNavigate();
-  const [connectStatus,setConnectStatus] = useState(false)
+  const [connectFBStatus, setConnectFBStatus] = useState(false)
+  const [connectLinkedinStatus, setConnectLinkedinStatus] = useState(false)
    const accessToken = localStorage.getItem('token');
   const handleLoginSuccess = (response) => {
     console.log(response)
@@ -48,14 +50,29 @@ const AddProfile = () => {
       };
     }
   };
-  const getProfileStatus = () => {
+  const getFBProfileStatus = () => {
      axios.get(`${baseUrl}/facebook/connect-profile-status`, {
       headers: {
         token: accessToken
       }
     }).then((res) => {
       console.log(res);
-      setConnectStatus(res.data.success)
+      setConnectFBStatus(res.data.success)
+      return res.data.success
+    })
+    .catch((error) => {
+      console.log('something went wrong', error);
+    });
+  }
+
+    const getLinkedinProfileStatus = () => {
+     axios.get(`${baseUrl}/linkedin/connect-profile-status`, {
+      headers: {
+        token: accessToken
+      }
+    }).then((res) => {
+      console.log(res);
+      setConnectLinkedinStatus(res.data.success)
       return res.data.success
     })
     .catch((error) => {
@@ -63,7 +80,8 @@ const AddProfile = () => {
     });
   }
   useEffect(() => {
-    getProfileStatus()
+    getFBProfileStatus()
+    getLinkedinProfileStatus()
   },[])
   return (
     <>
@@ -78,7 +96,13 @@ const AddProfile = () => {
             <div className="card-inner">
                 {/* <img src={FbImg} alt=""/>
                 <img src={AddIcon} alt=""/> */}
-            {!connectStatus ? <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>: 'Connected with facebook'}
+            {!connectFBStatus ? <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>: 'Connected with facebook'}
+          </div>
+          
+           <div className="card-inner">
+                {/* <img src={FbImg} alt=""/>
+                <img src={AddIcon} alt=""/> */}
+             <Linkedin connectLinkedinStatus={connectLinkedinStatus} />
             
             </div>
         </div>
