@@ -43,6 +43,8 @@
     "facebook-node-sdk": "^0.2.0",
     "fb": "^2.0.0",
     "flatted": "^3.2.7",
+    "linkedin-private-api": "^1.1.2",
+    "linkedin-voyager": "^0.0.19",
     "messenger-node": "^0.3.2",
     "mysql2": "^2.3.3",
     "passport-jwt": "^4.0.1",
@@ -50,8 +52,10 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "tough-cookie": "^4.1.2",
     "typeorm": "^0.3.11",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "voyager-client": "^1.0.0-beta"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

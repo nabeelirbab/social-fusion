@@ -104,9 +104,13 @@ const AddProfile = () => {
                 <img src={AddIcon} alt=""/> */}
              <Linkedin connectLinkedinStatus={connectLinkedinStatus} />
             
+      <div className="fb-send-to-messenger" messenger_app_id="156744197330354" data-ref="your-data-ref" data-size="large" data-color="blue" data-callback="sendToMessengerCallback"></div>
             </div>
         </div>
+        {/* <div class="fb-share-button" data-href="https://localhost:3000/linkedin" data-layout="button_count" data-size="large"><a target="_blank" href="http://localhost:3000/linkedin" class="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div> */}
+
       </div>
+
     </>
   );
 };

@@ -15,6 +15,18 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+   <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '156744197330354',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v12.0' // Update the version if needed.
+    });
+  };
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -28,6 +40,17 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+  function sendToMessengerCallback(event) {
+    if (event.event === 'opt_in') {
+      var dataRef = event.data_ref;
+      console.log('Send to Messenger button clicked. Data Ref:', dataRef);
+      // Add your custom logic here, e.g., send the dataRef to your server for further processing.
+    } else if (event.event === 'error') {
+      console.error('Error occurred while using Send to Messenger button:', event.error_message);
+    }
+  }
+</script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

@@ -60,4 +60,51 @@ export class LinkedinController {
   async profile(@Headers('token') token: string): Promise<any> {
     return await this.linkedinService.getSavedProfile(token);
   }
+
+  @Post('create-chat')
+  async createChat(@Headers('token') token: string) {
+    return await this.linkedinService.createChat(token);
+  }
+
+  @Post('connect')
+  async test(@Headers('token') accessToken: string) {
+    return await this.linkedinService.login(accessToken);
+  }
+
+  @Get('verify')
+  async verify(@Headers('token') token: string) {
+    return await this.linkedinService.getUserAuthVerified(token);
+  }
+
+  @Get('find-connection')
+  async findConnection(
+    @Query('name') name: string,
+    @Headers('token') accessToken: string
+  ) {
+    return await this.linkedinService.searchConnections(name, accessToken);
+  }
+
+  @Get('find-chats')
+  async findChats(@Headers('token') accessToken: string) {
+    return await this.linkedinService.getAllChats(accessToken);
+  }
+
+  @Get('find-chat')
+  async find(
+    @Query('profileId') profileId: string,
+    @Headers('token') accessToken: string
+  ) {
+    return await this.linkedinService.getChatByProfileId(
+      profileId,
+      accessToken
+    );
+  }
+
+  @Post('send-chat')
+  async sendMessage(
+    @Query('profileId') profileId: string,
+    @Headers('token') accessToken: string
+  ) {
+    return await this.linkedinService.sendMessage(profileId, accessToken);
+  }
 }
