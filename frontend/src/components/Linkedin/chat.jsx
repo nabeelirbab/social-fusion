@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import './style.css'
 import { getChat, sendChat, sendMessage } from "./helperFunctions";
 
-export default function Chat({ conversation, accessToken }) {
+export default function Chat({ conversation }) {
     
   const [messageInput, setMessageInput] = useState("");
   const [messages, setMessages] = useState([]);
