@@ -1,26 +1,70 @@
 .sidebar {
-  /* padding: 120px 20px 120px 20px; */
   margin: 20px;
   border-radius: 15px;
-  /* width: 40%; */
   position: fixed;
   top: 0;
   right: 0;
-  background: #03b48a;
-  /* height: 100vh; */
-  height:94.5vh;
+  background: #a66dfe;
+  height: 94.5vh;
 }
-.sidebar-inner{
+.sidebar-inner {
   display: flex;
   justify-content: center;
 }
-.login-img{
+.login-img {
   width: 100%;
   height: auto;
 }
-.login-main{
+.login-main {
   margin: 20px;
 }
-.login-inner{
-  padding: 100px;
+.login-inner {
+  padding: 70px 80px;
+}
+.login-inner h5 {
+  font-weight: 500;
+  font-size: 30px;
+}
+.login-inner p {
+  padding: 10px 0px 0px 0px;
+  margin: 0px;
+}
+.login-inner p Link {
+  font-weight: 600;
+  color: #a66dfe;
+}
+.form-main{
+  width: 70%;
+}
+.form-main .input {
+  width: 80%;
+  padding: 0px 0px 0px 10px;
+  border: none;
+  outline: none;
+}
+.form-main label {
+  color: #999999;
+}
+.password{
+  display: flex;
+  justify-content: space-between;
+}
+.forgot-pass{
+  display: flex;
+  justify-content: space-between;
+}
+.forgot-pass button{
+  border: none;
+  color: #a66dfe;
+  background-color: #ffff;
+}
+.login-btn {
+  border: none;
+  margin-top: 40px;
+  width: 100%;
+  background-color: #a66dfe;
+  border-radius: 60px;
+  color: #ffff;
+  padding: 12px;
+  font-size: 16px;
 }
