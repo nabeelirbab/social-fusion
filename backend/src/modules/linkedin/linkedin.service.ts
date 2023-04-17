@@ -215,6 +215,7 @@ export class LinkedinService {
     @Res() res: any
   ): Promise<{ accessToken: string }> {
     const decoded = await this.helper.decode(token as string); // verify access token and get user from db
+    // console.log(decoded);
     const user = decoded ? await this.helper.validateUser(decoded) : null;
     if (!user) throw new HttpException('User not found!', HttpStatus.NOT_FOUND);
     const existingProfile = await this.userRepository.findOne({
@@ -440,32 +441,33 @@ export class LinkedinService {
       where: { email: user.email },
       relations: ['linkedin'],
     });
-    const name = 'nimra sarfraz';
+    // const name = 'nimra sarfraz';
     const accessToken = existingProfile.linkedin.accessToken;
 
     // Step 1: Search for the recipient's profile
-    const searchEndpoint = `https://api.linkedin.com/v2/messages`;
+    const searchEndpoint = `https://api.linkedin.com/v2/connections/ACoAACbca1UBXQNZEDr2ftK6qXHY4Ps3UsmBONo`;
     const headers = {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
       // 'X-Restli-Protocol-Version': '202204.01', // Add LinkedIn-Version header
       'LinkedIn-Version': '202210',
     };
-    const data = {
-      recipients: ['urn:li:person:123ABC', 'urn:li:person:456DEF'],
-      subject: 'Group conversation title',
-      body: 'Hello everyone! This is a message conversation to demo the Message API.',
-      messageType: 'MEMBER_TO_MEMBER',
-      attachments: ['urn:li:digitalMediaAsset:123ABC'],
-    };
+    // const data = {
+    //   recipients: ['urn:li:person:123ABC', 'urn:li:person:456DEF'],
+    //   subject: 'Group conversation title',
+    //   body: 'Hello everyone! This is a message conversation to demo the Message API.',
+    //   messageType: 'MEMBER_TO_MEMBER',
+    //   attachments: ['urn:li:digitalMediaAsset:123ABC'],
+    // };
 
     axios
-      .post(searchEndpoint, data, {
+      .get(searchEndpoint, {
         headers,
       })
       .then((response) => {
+        console.log(response);
         const profiles = response.data.elements;
-        console.log(profiles);
+        // console.log(profiles);
         if (profiles.length === 0) {
           console.log('No results found for search query');
         } else {
