@@ -10,68 +10,26 @@
   justify-content: center;
 }
 
-.modal-content {
+.modal-contents {
   width: 35%;
-  background-color: white;
-  padding: 20px;
+  background: white;
+  padding: 50px;
+  text-align: center;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-
-.modal-content h2 {
-  margin-top: 0;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  display: flex;
-  justify-content: center;
+.modal-contents h4 {
+  padding: 30px 0px 0px 0px;
 }
-.modal-content span {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
+
+.verify-btn {
+  border: none;
+  margin-top: 40px;
+  width: 100%;
+  background-color: #a66dfe;
+  border-radius: 60px;
+  color: #ffff;
+  padding: 12px;
   font-size: 16px;
-  display: flex;
-  justify-content: center;
-  color: #697279;
-  margin-top: -12px;
-}
-.modal-inner {
-  padding: 60px;
-}
-
-.modal-content p {
-  margin-bottom: 0;
-}
-.modal-content button {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #a66dfe;
-  border-radius: 5px;
-  border: none;
-  padding: 8px;
-  font-family: "Roboto";
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-}
-.modal-content .cancel-btn {
-    margin-top: 8px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #D9D9D9;
-  border-radius: 5px;
-  border: none;
-  padding: 8px;
-  font-family: "Roboto";
-  font-size: 18px;
-  color: #8A8C95;
-  cursor: pointer;
-}
-.modal-content p{
-font-size: 16px;
-color: #8A8C95;
+  text-align: center;
 }

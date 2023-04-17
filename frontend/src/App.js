@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/Auth/Login/Login';
 import { ToastContainer } from 'react-toastify';
 import Linkedin from "./components/Linkedin/linkedin";
+import Sidebar from './components/Dashboard/Sidebar/sidebar';
 
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
     {
       path: "/signup",
       element: <SignUp />,
+    },
+    {
+      path: "/dashboards",
+      element: <Sidebar />,
     },
     {
       path: "/addprofile",

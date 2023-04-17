@@ -1,24 +1,19 @@
 import React from "react";
 import "./Modal.css";
+import VerifyIcon from "../../../images/verify.png"
 
 const Modal = ({ onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-contents" onClick={(e) => e.stopPropagation()}>
         <div className="modal-inner">
-          <h2>SocialFusion is requesting access to:</h2>
-          <span>Your name , profile picture and email address</span>
+          <img src={VerifyIcon} alt=""/>
+          <h4>Please verify your email address</h4>
+          <p>Email has been sent to your account!</p>
         </div>
-        <button>Continue as Mike</button>
-        <button onClick={onClose} className="cancel-btn">
-          Cancel
+        <button onClick={onClose} className="verify-btn">
+          Verify
         </button>
-        <p>
-          By continuing, SocialFusion will receive ongoing access to the
-          information that you share and Facebook will record when SocialFusion
-          accesses it. Learn more about this sharing and the settings you have.
-          <br/>SocialFusion Privacy Policy and Terms
-        </p>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import UserIcon from "../../../images/userIcon.png";
 import MsgIcon from "../../../images/msgIcon.png";
 import lockIcon from "../../../images/lockIcon.png";
+import Modal from "../../Dashboard/Modal/Modal";
 
 const SignUp = () => {
   const [credentials, setCredentials] = useState({
@@ -25,6 +26,16 @@ const SignUp = () => {
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddProfileClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
   };
 
   // const baseUrl = "http://localhost:3300/api";
@@ -198,7 +209,7 @@ const SignUp = () => {
               ></div>
             </div>
 
-            <div style={{ marginTop: 20}}>
+            <div style={{ marginTop: 20 }}>
               <div className="forgot-pass">
                 <div>
                   <input
@@ -212,44 +223,14 @@ const SignUp = () => {
                 <button>Forgot Password ?</button>
               </div>
             </div>
-            <button className="signup-btn">Login</button>
-            {/* <div style={{ marginTop: "10px" }}>
-              <label>Business Email</label> <br />
-              <input
-                type="email"
-                value={credentials.email}
-                onChange={(e) =>
-                  setCredentials({ ...credentials, email: e.target.value })
-                }
-                placeholder="name@gmail.com"
-              />
+            {/* <button className="signup-btn">Login</button> */}
+            <div className="signup-btn" onClick={handleAddProfileClick}>
+              Register
             </div>
-            <div style={{ marginTop: "10px" }}>
-              <label>Confirm Business Email</label> <br />
-              <input
-                type="email"
-                value={businessEmail}
-                onChange={(e) => setBusinessEmail(e.target.value)}
-                placeholder="name@gmail.com"
-              />
-            </div>
-            <div>
-              <div className="forgot">
-                <label>Password</label>
-                <a href="./dasd">Forgot Password ?</a>
-              </div>
-              <br />
-              <input
-                placeholder="******"
-                value={credentials.password}
-                onChange={(e) =>
-                  setCredentials({ ...credentials, password: e.target.value })
-                }
-              />
-            </div> */}
           </form>
         </div>
       </div>
+      {isModalOpen && <Modal onClose={handleModalClose} />}
     </>
   );
 };
