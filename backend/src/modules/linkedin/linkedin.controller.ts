@@ -107,7 +107,6 @@ export class LinkedinController {
     @Headers('token') accessToken: string,
     @Body('msg') msg: string
   ) {
-    console.log(msg);
     return await this.linkedinService.sendMessage(profileId, accessToken, msg);
   }
 }
