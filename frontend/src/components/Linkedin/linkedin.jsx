@@ -3,6 +3,7 @@ import OAuthPopup from './customOAuth';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { connect } from './helperFunctions';
 const Linkedin = ({connectLinkedinStatus}) => {
     const [article, setArticle] = useState('');
     const token=localStorage.getItem('token')
@@ -19,6 +20,7 @@ const Linkedin = ({connectLinkedinStatus}) => {
     }
     useEffect(() => {
       getProfile(token)
+      connect()
     },[])
 
     const handleLinkedInLogin = async (accessToken) => {

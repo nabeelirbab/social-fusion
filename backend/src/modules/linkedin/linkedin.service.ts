@@ -45,7 +45,7 @@ export class LinkedinService {
       await this.api.login.userPass({
         username,
         password,
-        useCache: false,
+        useCache: true,
       });
       return 'success';
     } catch (error) {
@@ -181,7 +181,7 @@ export class LinkedinService {
     // Find the conversation with the specified profileId
     const chat: any = conversations.find((conv) =>
       conv.participants.some(
-        (participant) => participant.profileId === profileId
+        (participant) => participant?.profileId === profileId
       )
     );
     const chats: any = await this.api.message
@@ -193,7 +193,7 @@ export class LinkedinService {
     return chats;
   }
 
-  async sendMessage(profileId: string, accessToken: string) {
+  async sendMessage(profileId: string, accessToken: string, msg) {
     const verified = await this.getUserAuthVerified(accessToken);
     if (!verified) {
       throw new HttpException(
@@ -203,7 +203,7 @@ export class LinkedinService {
     }
     const chat = await this.api.message.sendMessage({
       profileId: profileId,
-      text: `hy whatsup`,
+      text: `${msg}`,
     });
     return chat;
   }
@@ -392,7 +392,7 @@ export class LinkedinService {
     );
   }
 
-  async connectStatus(token: string) {
+  async connectStatus(token: string): Promise<{ success: boolean }> {
     try {
       const decoded = await this.helper.decode(token as string); // verify access token and get user from db
       const user = decoded ? await this.helper.validateUser(decoded) : null;

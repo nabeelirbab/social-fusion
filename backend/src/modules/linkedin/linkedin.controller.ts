@@ -8,6 +8,7 @@ import {
   Req,
   Headers,
   Res,
+  Param,
 } from '@nestjs/common';
 import axios from 'axios';
 
@@ -89,9 +90,9 @@ export class LinkedinController {
     return await this.linkedinService.getAllChats(accessToken);
   }
 
-  @Get('find-chat')
+  @Get('find-chat/:id')
   async find(
-    @Query('profileId') profileId: string,
+    @Param('id') profileId: string,
     @Headers('token') accessToken: string
   ) {
     return await this.linkedinService.getChatByProfileId(
@@ -100,11 +101,13 @@ export class LinkedinController {
     );
   }
 
-  @Post('send-chat')
+  @Post('send-chat/:id')
   async sendMessage(
-    @Query('profileId') profileId: string,
-    @Headers('token') accessToken: string
+    @Param('id') profileId: string,
+    @Headers('token') accessToken: string,
+    @Body('msg') msg: string
   ) {
-    return await this.linkedinService.sendMessage(profileId, accessToken);
+    console.log(msg);
+    return await this.linkedinService.sendMessage(profileId, accessToken, msg);
   }
 }
