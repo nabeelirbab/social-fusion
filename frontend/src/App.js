@@ -6,6 +6,9 @@ import SignUp from "./components/Auth/SignUp/SignUp";
 import AddProfile from "./components/Dashboard/AddProfile/AddProfile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/Auth/Login/Login';
+import { ToastContainer } from 'react-toastify';
+import Linkedin from "./components/Linkedin/linkedin";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -25,9 +28,14 @@ function App() {
       path: "/addprofile",
       element: <AddProfile />,
     },
+    {
+      path: "/linkedin",
+      element: <Linkedin />,
+    },
   ]);
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={router} />
     </>
   );

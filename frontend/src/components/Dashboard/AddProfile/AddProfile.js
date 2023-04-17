@@ -1,69 +1,116 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import "./AddProfile.css";
-import FbImg from "../../../images/fb.png";
-import instaImg from "../../../images/insta.png";
-import twitterImg from "../../../images/twitter.png";
-import linkedInImg from "../../../images/linkedIn.png";
-import AddIcon from "../../../images/add.png";
-import Modal from "../Modal/Modal";
-
-const profiles = [
-  {
-    imageUrl: FbImg,
-    name: "Facebook Profile",
-  },
-  {
-    imageUrl: instaImg,
-    name: "Instagram Profile",
-  },
-  {
-    imageUrl: twitterImg,
-    name: "Twitter Profile",
-  },
-  {
-    imageUrl: linkedInImg,
-    name: "LinkedIn Profile",
-  },
-];
-
+import FbImg from "../../../images/fb.png"
+import AddIcon from "../../../images/add.png"
+import FacebookLoginButton from "../../Facebook/facebook-login";
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Linkedin from "../../Linkedin/linkedin";
 const AddProfile = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const baseUrl='http://localhost:3300/api'
+  const navigate = useNavigate();
+  const [connectFBStatus, setConnectFBStatus] = useState(false)
+  const [connectLinkedinStatus, setConnectLinkedinStatus] = useState(false)
+   const accessToken = localStorage.getItem('token');
+  const handleLoginSuccess = (response) => {
+    console.log(response)
+      axios.post(`${baseUrl}/facebook/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email,expiresIn:response.expiresIn },{
+        headers: {
+          token: accessToken
+        }
+})
+        .then((res) => {
+          toast.success('profile successfully added!')
+    })
+    .catch((error) => {
+      if (error.message === 'Request failed with status code 409') {
+        toast.error('Profile Already Added')
+      }
+      else {
+        toast.error('Could not add profile')
 
-  const handleAddProfileClick = () => {
-    setIsModalOpen(true);
+      }
+    });
   };
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
+  const handleLoginFailure = () => {
+    toast.error('Login failed')
   };
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/');
+    if (window.history && window.history.pushState) {
+      window.history.pushState('', null, './');
+      window.onpopstate = function() {
+        window.history.pushState('', null, './');
+      };
+    }
+  };
+  const getFBProfileStatus = () => {
+     axios.get(`${baseUrl}/facebook/connect-profile-status`, {
+      headers: {
+        token: accessToken
+      }
+    }).then((res) => {
+      console.log(res);
+      setConnectFBStatus(res.data.success)
+      return res.data.success
+    })
+    .catch((error) => {
+      console.log('something went wrong', error);
+    });
+  }
+
+    const getLinkedinProfileStatus = () => {
+     axios.get(`${baseUrl}/linkedin/connect-profile-status`, {
+      headers: {
+        token: accessToken
+      }
+    }).then((res) => {
+      console.log(res);
+      setConnectLinkedinStatus(res.data.success)
+      return res.data.success
+    })
+    .catch((error) => {
+      console.log('something went wrong', error);
+    });
+  }
+  useEffect(() => {
+    getFBProfileStatus()
+    getLinkedinProfileStatus()
+  },[])
   return (
     <>
       <div className="addprofile-main">
-        <div className="addprofile-inner">
+        <div>
           <h2>Add your Profile </h2>
           <p>Connect social profiles you’d like to manage.</p>
         </div>
+        <button onClickCapture={logout}>Logout</button>
 
-        {profiles.map((profile, index) => {
-          return (
-            <div className="ap-card" key={index}>
-              <div className="card-inner">
-                <img src={profile.imageUrl} alt="social-img" />
-                <img
-                  style={{cursor:'pointer'}}
-                  onClick={handleAddProfileClick}
-                  src={AddIcon}
-                  alt=""
-                />
-              </div>
-              <p>{profile.name}</p>
+        <div className="ap-card">
+            <div className="card-inner">
+                {/* <img src={FbImg} alt=""/>
+                <img src={AddIcon} alt=""/> */}
+            {!connectFBStatus ? <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>: 'Connected with facebook'}
+          </div>
+          
+           <div className="card-inner">
+                {/* <img src={FbImg} alt=""/>
+                <img src={AddIcon} alt=""/> */}
+             <Linkedin connectLinkedinStatus={connectLinkedinStatus} />
+            
+      <div className="fb-send-to-messenger" messenger_app_id="156744197330354" data-ref="your-data-ref" data-size="large" data-color="blue" data-callback="sendToMessengerCallback"></div>
             </div>
-          );
-        })}
+        </div>
+        {/* <div class="fb-share-button" data-href="https://localhost:3000/linkedin" data-layout="button_count" data-size="large"><a target="_blank" href="http://localhost:3000/linkedin" class="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div> */}
+
       </div>
 
-      {isModalOpen && <Modal onClose={handleModalClose} />}
     </>
   );
 };
