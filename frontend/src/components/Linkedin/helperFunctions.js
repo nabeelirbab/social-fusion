@@ -1,5 +1,7 @@
 
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const baseUrl = `http://localhost:3300/api/linkedin`
 const accessToken =localStorage.getItem('token')
 export async function getChats() {
@@ -17,18 +19,25 @@ export async function getChats() {
     }
 }
 
-export async function connect() {
+export async function connect(userName,password) {
     try {      
         const res = await axios(`${baseUrl}/connect`, {
             method: 'POST',
             headers: {
             token:accessToken
-        }
+            }
+            ,
+            data: {
+                userName,
+                password
+            }
         })
         console.log(res.data)
+        // if(res.data)
     }
     catch (error) {
         console.log('error / invalid credentials')
+        toast.error('invalid credentials')
     }
 }
 

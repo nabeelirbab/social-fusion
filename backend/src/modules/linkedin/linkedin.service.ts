@@ -30,7 +30,7 @@ export class LinkedinService {
   constructor() {
     this.api = new Client();
   }
-  async login(accessToken: string) {
+  async login(accessToken: string, username, password) {
     const verified = await this.getUserAuthVerified(accessToken);
     if (!verified) {
       throw new HttpException(
@@ -38,8 +38,8 @@ export class LinkedinService {
         HttpStatus.BAD_REQUEST
       );
     }
-    const username = (process.env.USERNAME as string) || '03170431427';
-    const password = (process.env.PASSWORD as string) || 'hymissrumi';
+    // const username = (process.env.USERNAME as string) || '03170431427';
+    // const password = (process.env.PASSWORD as string) || 'hymissrumi';
     // const client = new Client();
     try {
       await this.api.login.userPass({
@@ -49,6 +49,7 @@ export class LinkedinService {
       });
       return 'success';
     } catch (error) {
+      console.log(error);
       throw new HttpException('conenction failed', HttpStatus.BAD_GATEWAY);
     }
     // const conversations = await client.conversation.getConversations().fetch();

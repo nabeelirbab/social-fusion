@@ -68,8 +68,12 @@ export class LinkedinController {
   }
 
   @Post('connect')
-  async test(@Headers('token') accessToken: string) {
-    return await this.linkedinService.login(accessToken);
+  async test(
+    @Headers('token') accessToken: string,
+    @Body('userName') userName: string,
+    @Body('password') password: string
+  ) {
+    return await this.linkedinService.login(accessToken, userName, password);
   }
 
   @Get('verify')

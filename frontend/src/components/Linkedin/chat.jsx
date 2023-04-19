@@ -37,18 +37,49 @@ setMessages(data);   });
 
   return (
   <div className="chat">
-    {messages?.filter((message) => message?.text && message?.text?.trim()).reverse()?.map((message) => {
-      const { text, sentFrom } = message;
-      const fromMe = sentFrom.profileId !== conversation?.profileId;
-      const className = fromMe ? "chat-bubble chat-bubble-me" : "chat-bubble chat-bubble-other";
+  {messages
+  ?.filter((message) => message?.text && message?.text?.trim())
+  .reverse()
+  ?.map((message) => {
+    const { text, sentFrom, messageType, mediaUrl } = message;
+    const fromMe = sentFrom.profileId !== conversation?.profileId;
+    const className = fromMe ? "chat-bubble chat-bubble-me" : "chat-bubble chat-bubble-other";
 
-      return (
-        <div className={className}>
-          {!fromMe && <div className="chat-from">{sentFrom.firstName}</div>}
-          <div className="chat-text">{text}</div>
-        </div>
-      );
-    })}
+    let content;
+    switch (messageType) {
+      case "text":
+        content = <div className="chat-text">{text}</div>;
+        break;
+      case "image":
+        content = (
+          <div className="chat-media">
+            <img src={mediaUrl} alt="Image" />
+          </div>
+        );
+        break;
+      case "video":
+        content = (
+          <div className="chat-media">
+            <video src={mediaUrl} controls />
+          </div>
+        );
+        break;
+      default:
+        content = <div className="chat-text">{text}</div>;
+        break;
+    }
+
+    return (
+      <div className={className}>
+        {!fromMe && <div className="chat-from">{sentFrom.firstName}</div>}
+        {content}
+      </div>
+    );
+})}
+
+        {/* </div> */}
+      {/* ); */}
+     {/* })} */}
     <form onSubmit={handleSendMessage}>
       <input
         type="text"

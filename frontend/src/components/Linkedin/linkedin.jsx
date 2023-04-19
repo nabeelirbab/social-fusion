@@ -20,7 +20,6 @@ const Linkedin = ({connectLinkedinStatus}) => {
     }
     useEffect(() => {
       getProfile(token)
-      connect()
     },[])
 
     const handleLinkedInLogin = async (accessToken) => {
