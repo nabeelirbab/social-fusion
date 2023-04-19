@@ -1,3 +1,4 @@
+import { LinkedinChat } from 'src/modules/linkedin/entities/linkedinchat.entity';
 import {
   HttpException,
   HttpStatus,
@@ -22,6 +23,8 @@ export class LinkedinService {
   private readonly userRepository: Repository<User>;
   @InjectRepository(Linkedin)
   private readonly linkedinRepository: Repository<Linkedin>;
+  @InjectRepository(LinkedinChat)
+  private readonly linkedinChatRepository: Repository<LinkedinChat>;
   @Inject(AuthHelper)
   private readonly helper: AuthHelper;
   private api: Client;
@@ -206,6 +209,16 @@ export class LinkedinService {
       profileId: profileId,
       text: `${msg}`,
     });
+    const decoded = await this.helper.decode(accessToken as string); // verify access token and get user from db
+    const sender = decoded ? await this.helper.validateUser(decoded) : null;
+    if (chat) {
+      console.log('hi');
+      await this.linkedinChatRepository.save({
+        sender,
+        receiverProfileId: profileId,
+        message: msg,
+      });
+    }
     return chat;
   }
 

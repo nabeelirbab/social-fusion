@@ -18,8 +18,9 @@ export default function Chat({ conversation }) {
   const handleSendMessage = async (event) => {
     event.preventDefault();
 
-   sendChat(conversation?.profileId,messageInput).then((data) => {
-setMessages(data);   });
+    sendChat(conversation?.profileId, messageInput)
+      // .then((data) => {
+// setMessages(data);   });
       setMessageInput("")
   };
 

@@ -6,9 +6,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Facebook } from '../facebook/entities/facebook.entity';
 import { Linkedin } from '../linkedin/entities/linkedin.entity';
+import { LinkedinChat } from '../linkedin/entities/linkedinchat.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Facebook, Linkedin]), AuthModule],
+  imports: [
+    TypeOrmModule.forFeature([User, Facebook, Linkedin, LinkedinChat]),
+    AuthModule,
+  ],
   controllers: [UserController],
   providers: [UserService],
 })
