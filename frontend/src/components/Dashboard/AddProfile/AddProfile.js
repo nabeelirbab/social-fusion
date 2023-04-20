@@ -6,14 +6,14 @@ import FacebookLoginButton from "../../Facebook/facebook-login";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 import Linkedin from "../../Linkedin/linkedin";
 const AddProfile = () => {
   const baseUrl = "http://localhost:3300/api";
   const navigate = useNavigate();
-  const [connectFBStatus, setConnectFBStatus] = useState(false);
-  const [connectLinkedinStatus, setConnectLinkedinStatus] = useState(false);
-  const accessToken = localStorage.getItem("token");
+  const [connectFBStatus, setConnectFBStatus] = useState(false)
+  const [connectLinkedinStatus, setConnectLinkedinStatus] = useState(false)
+   const accessToken = localStorage.getItem('token');
   const handleLoginSuccess = (response) => {
     console.log(response);
     axios
@@ -59,42 +59,38 @@ const AddProfile = () => {
     }
   };
   const getFBProfileStatus = () => {
-    axios
-      .get(`${baseUrl}/facebook/connect-profile-status`, {
-        headers: {
-          token: accessToken,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        setConnectFBStatus(res.data.success);
-        return res.data.success;
-      })
-      .catch((error) => {
-        console.log("something went wrong", error);
-      });
-  };
+     axios.get(`${baseUrl}/facebook/connect-profile-status`, {
+      headers: {
+        token: accessToken
+      }
+    }).then((res) => {
+      console.log(res);
+      setConnectFBStatus(res.data.success)
+      return res.data.success
+    })
+    .catch((error) => {
+      console.log('something went wrong', error);
+    });
+  }
 
-  const getLinkedinProfileStatus = () => {
-    axios
-      .get(`${baseUrl}/linkedin/connect-profile-status`, {
-        headers: {
-          token: accessToken,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        setConnectLinkedinStatus(res.data.success);
-        return res.data.success;
-      })
-      .catch((error) => {
-        console.log("something went wrong", error);
-      });
-  };
+    const getLinkedinProfileStatus = () => {
+     axios.get(`${baseUrl}/linkedin/connect-profile-status`, {
+      headers: {
+        token: accessToken
+      }
+    }).then((res) => {
+      console.log(res);
+      setConnectLinkedinStatus(res.data.success)
+      return res.data.success
+    })
+    .catch((error) => {
+      console.log('something went wrong', error);
+    });
+  }
   useEffect(() => {
-    getFBProfileStatus();
-    getLinkedinProfileStatus();
-  }, []);
+    getFBProfileStatus()
+    getLinkedinProfileStatus()
+  },[])
   return (
     <>
       <div className="addprofile-main">
@@ -108,33 +104,21 @@ const AddProfile = () => {
           <div className="card-inner">
             {/* <img src={FbImg} alt=""/>
                 <img src={AddIcon} alt=""/> */}
-            {!connectFBStatus ? (
-              <FacebookLoginButton
-                onLoginSuccess={handleLoginSuccess}
-                onLoginFailure={handleLoginFailure}
-              />
-            ) : (
-              "Connected with facebook"
-            )}
+            {!connectFBStatus ? <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>: 'Connected with facebook'}
           </div>
-
-          <div className="card-inner">
-            {/* <img src={FbImg} alt=""/>
+          
+           <div className="card-inner">
+                {/* <img src={FbImg} alt=""/>
                 <img src={AddIcon} alt=""/> */}
-            <Linkedin connectLinkedinStatus={connectLinkedinStatus} />
-
-            <div
-              className="fb-send-to-messenger"
-              messenger_app_id="156744197330354"
-              data-ref="your-data-ref"
-              data-size="large"
-              data-color="blue"
-              data-callback="sendToMessengerCallback"
-            ></div>
-          </div>
+             <Linkedin connectLinkedinStatus={connectLinkedinStatus} />
+            
+      <div className="fb-send-to-messenger" messenger_app_id="156744197330354" data-ref="your-data-ref" data-size="large" data-color="blue" data-callback="sendToMessengerCallback"></div>
+            </div>
         </div>
         {/* <div class="fb-share-button" data-href="https://localhost:3000/linkedin" data-layout="button_count" data-size="large"><a target="_blank" href="http://localhost:3000/linkedin" class="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div> */}
+
       </div>
+
     </>
   );
 };

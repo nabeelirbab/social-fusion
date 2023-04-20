@@ -46,7 +46,11 @@ export class AuthHelper {
   // Get User by User ID we get from decode()
   public async validateUser(decoded: any): Promise<User> {
     const user = await this.repository.findOne({ where: { id: decoded.id } });
-    delete user.password;
-    return user;
+    // console.log(user);
+    if (user) {
+      // console.log(user);
+      delete user.password;
+      return user;
+    }
   }
 }

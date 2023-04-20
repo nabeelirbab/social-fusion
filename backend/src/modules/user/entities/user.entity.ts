@@ -5,6 +5,8 @@ import {
   UpdateDateColumn,
   Index,
   PrimaryGeneratedColumn,
+  OneToOne,
+  OneToMany,
 } from 'typeorm';
 import {
   IUserParams,
@@ -13,6 +15,9 @@ import {
   UserRoleEnum,
   SocialProviderEnum,
 } from '@lib/types';
+import { Facebook } from 'src/modules/facebook/entities/facebook.entity';
+import { Linkedin } from 'src/modules/linkedin/entities/linkedin.entity';
+import { LinkedinChat } from 'src/modules/linkedin/entities/linkedinchat.entity';
 @Entity({ name: `user` })
 export class User implements IUser {
   constructor(params?: IUserParams) {
@@ -26,7 +31,7 @@ export class User implements IUser {
 
   // PrimaryGeneratedColumn decorator create error it store in uuid but return string
   // which cause in cassandra that's why we are using transformer feature
-  @PrimaryGeneratedColumn(`uuid`)
+  @PrimaryGeneratedColumn()
   readonly id: string;
 
   @Index()
@@ -67,6 +72,21 @@ export class User implements IUser {
     default: true,
   })
   disabled?: boolean;
+
+  @OneToOne(() => Facebook, (fb) => fb.user, {
+    cascade: true,
+    eager: true,
+  })
+  facebook: Facebook;
+
+  @OneToOne(() => Linkedin, (linkedin) => linkedin.user, {
+    cascade: true,
+    eager: true,
+  })
+  linkedin: Linkedin;
+
+  @OneToMany(() => LinkedinChat, (chat) => chat.sender)
+  sentChats: LinkedinChat[];
 
   @Column()
   @CreateDateColumn()

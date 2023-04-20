@@ -10,6 +10,8 @@ import { ToastContainer } from 'react-toastify';
 import Linkedin from "./components/Linkedin/linkedin";
 import Sidebar from './components/Dashboard/Sidebar/sidebar';
 
+import Conversations from "./components/Linkedin/Conversations";
+import LinkedinConnect from "./components/Linkedin/connect";
 
 function App() {
   const router = createBrowserRouter([
@@ -36,6 +38,15 @@ function App() {
     {
       path: "/linkedin",
       element: <Linkedin />,
+    },
+    {
+      path: "/chats",
+      element: <Conversations />,
+    },
+
+    {
+      path: "/connect-linkedin",
+      element: <LinkedinConnect />,
     },
   ]);
   return (
