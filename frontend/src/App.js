@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import Linkedin from "./components/Linkedin/linkedin";
 import Conversations from "./components/Linkedin/Conversations";
 import LinkedinConnect from "./components/Linkedin/connect";
+import ConnectTwitter from "./components/Twitter/twitter";
 
 function App() {
   const router = createBrowserRouter([
@@ -35,6 +36,10 @@ function App() {
     {
       path: "/connect-linkedin",
       element: <LinkedinConnect />,
+    },
+    {
+      path: "/connect-twitter",
+      element: <ConnectTwitter />,
     },
   ]);
   return (

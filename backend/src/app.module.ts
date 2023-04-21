@@ -1,5 +1,5 @@
+import { TwitterModule } from './modules/twitter/twitter.module';
 import { Module } from '@nestjs/common';
-
 // config imports
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
@@ -36,6 +36,7 @@ import { LinkedinModule } from './modules/linkedin/linkedin.module';
     UserModule,
     FacebookModule,
     LinkedinModule,
+    TwitterModule,
   ],
   controllers: [],
   providers: [],
