@@ -45,9 +45,16 @@ const cards = [
 const Card = () => {
   const [isActive, setIsActive] = useState(false);
   const [region, setRegion] = useState("");
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [currentView, setCurrentView] = useState("dashboard");
 
   const handleClick = () => {
     setIsActive(!isActive);
+  };
+
+  const toggleNotifications = () => {
+    setShowNotifications(!showNotifications);
+    setCurrentView(showNotifications ? "dashboard" : "notifications");
   };
 
   useEffect(() => {
@@ -99,29 +106,45 @@ const Card = () => {
                     </div>
                   </div>
                   <div className="timezone">
-                    <span>Timezone: {region} </span>
+                    <span>Timezone: {region}</span>
                   </div>
                 </div>
-                <div className="card-main">
-                  {card.postItems.map((item, index) => (
-                    <React.Fragment key={index}>
-                      <div className="d-flex justify-content-between">
-                        <div className="post">
-                          <div>
-                          <img src={item.icon} alt="" /></div>
-                          <span>{item.title}</span>
+                {currentView === "dashboard" ? (
+                  <div className="card-main">
+                    {card.postItems.map((item, index) => (
+                      <React.Fragment key={index}>
+                        <div className="d-flex justify-content-between">
+                          <div className="post">
+                            <div>
+                              <img src={item.icon} alt="" />
+                            </div>
+                            <span>{item.title}</span>
+                          </div>
+                          <button
+                            className="view-all"
+                            onClick={toggleNotifications}
+                          >
+                            <span>View All</span>
+                            <img src={Arrow} alt="" />
+                          </button>
                         </div>
-                        <button className="view-all">
-                          <span>View All</span>
-                          <img src={Arrow} alt="" />
-                        </button>
-                      </div>
-                      {index !== card.postItems.length - 1 && (
-                        <div className="border"></div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
+                        {index !== card.postItems.length - 1 && (
+                          <div className="border"></div>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="notification-list">
+                    <h3>Notifications</h3>
+                    <ul>
+                      <li>Notification 1</li>
+                      <li>Notification 2</li>
+                      <li>Notification 3</li>
+                    </ul>
+                    <button onClick={toggleNotifications}>Back</button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
