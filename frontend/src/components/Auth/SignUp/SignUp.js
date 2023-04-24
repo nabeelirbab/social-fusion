@@ -94,7 +94,7 @@ const SignUp = () => {
           <form className="signup-form">
             <div style={{ marginTop: "10px" }}>
               <label>First Name</label> <br />
-              <div className="d-flex align-items-center">
+              <div className="fields">
                 <img src={UserIcon} alt="" />
                 <input
                   className="input"
@@ -113,7 +113,7 @@ const SignUp = () => {
             </div>
             <div style={{ marginTop: "10px" }}>
               <label>Last Name</label> <br />
-              <div className="d-flex align-items-center">
+              <div className="fields">
                 <img src={UserIcon} alt="" />
                 <input
                   className="input"
@@ -131,7 +131,7 @@ const SignUp = () => {
               ></div>
               <div style={{ marginTop: "10px" }}>
                 <label>Username</label> <br />
-                <div className="d-flex align-items-center">
+                <div className="fields">
                   <img src={UserIcon} alt="" />
                   <input
                     className="input"
@@ -151,7 +151,7 @@ const SignUp = () => {
             </div>
             <div style={{ marginTop: "10px" }}>
               <label>Email</label> <br />
-              <div className="d-flex align-items-center">
+              <div className="fields">
                 <img src={MsgIcon} alt="" />
                 <input
                   className="input"
@@ -171,7 +171,7 @@ const SignUp = () => {
 
             <div style={{ marginTop: "10px" }}>
               <label>Password</label> <br />
-              <div className="d-flex align-items-center">
+              <div className="fields">
                 <img src={lockIcon} alt="" />
                 <input
                   className="input"
@@ -191,7 +191,7 @@ const SignUp = () => {
 
             <div style={{ marginTop: "10px" }}>
               <label>Confirm Password</label> <br />
-              <div className="d-flex align-items-center">
+              <div className="fields">
                 <img src={lockIcon} alt="" />
                 <input
                   className="input"
@@ -217,7 +217,7 @@ const SignUp = () => {
                     checked={checked}
                     onChange={handleChange}
                   />
-                  <label className="px-3">{checked}Remember me</label>
+                  {/* <label className="px-3">{checked}Remember me</label> */}
                 </div>
 
                 <button>Forgot Password ?</button>

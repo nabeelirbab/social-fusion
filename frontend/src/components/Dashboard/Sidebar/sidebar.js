@@ -65,7 +65,7 @@ function Sidebar() {
       </div>
       <div className="main-content">
         <div className="dash-header">
-          <h4>Social Profile Overview </h4>
+          <h2>Social Profile Overview </h2>
           <img src={Profile} alt="profile" />
         </div>
         <div className="content">

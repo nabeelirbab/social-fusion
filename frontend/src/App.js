@@ -28,7 +28,7 @@ function App() {
       element: <SignUp />,
     },
     {
-      path: "/dashboards",
+      path: "/dashboard",
       element: <Sidebar />,
     },
     {

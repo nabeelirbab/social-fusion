@@ -30,7 +30,7 @@ input {
 }
 .signup-btn {
   border: none;
-  margin-top: 40px;
+  margin-top: 28px;
   width: 100%;
   background-color: #a66dfe;
   border-radius: 60px;
@@ -38,4 +38,9 @@ input {
   padding: 12px;
   font-size: 16px;
   text-align: center;
+}
+.fields{
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
 }
