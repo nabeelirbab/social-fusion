@@ -56,10 +56,13 @@ a:hover {
   /* any other styles for the main content */
 }
 .dash-header {
-  padding: 0px 0px 40px 0px;
+  padding: 0px 0px 20px 0px;
   display: flex;
   justify-content: space-between;
 }
 .dash-header img {
   object-fit: contain;
+}
+.content p {
+  color: #8A8C95;
 }
