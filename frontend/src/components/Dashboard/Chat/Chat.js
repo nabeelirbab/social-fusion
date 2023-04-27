@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./chat.css";
 import Facebook from "./FacebookInbox/FacebookInbox";
-import Inbox from "./Inbox/inbox";
+import LinkedinInbox from "./LinkedinInbox/LinkedinInbox";
 
 const Chat = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -25,7 +25,7 @@ const Chat = () => {
     {
       id: 3,
       title: "LinkedIn",
-      component: <Inbox />,
+      component: <LinkedinInbox />,
     },
   ];
 
