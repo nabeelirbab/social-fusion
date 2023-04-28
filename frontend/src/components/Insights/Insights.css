@@ -1,0 +1,29 @@
+.insights h2 {
+  text-align: center;
+  font-weight: 600;
+  padding: 20px;
+}
+.cal-card {
+  border-radius: 10px;
+  border: 0.704964px solid #d9d9d9;
+  background: #ffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.cal-card h1 {
+  font-weight: 400;
+  font-family: Inter;
+  font-style: Regular;
+}
+.cal-card-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.cal-card-inner span {
+  font-family: Inter;
+  color: #555770;
+}
+
+.margin-insight {
+  margin: 0px 30px 5px 30px;
+}

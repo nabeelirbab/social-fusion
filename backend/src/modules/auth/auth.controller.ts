@@ -27,7 +27,7 @@ import { UserRole, UserRoleEnum } from '@lib/types';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('register')
+  @Post('registerUser')
   @UseInterceptors(ClassSerializerInterceptor)
   @ApiOperation({ summary: 'Register User' })
   @ApiResponse({

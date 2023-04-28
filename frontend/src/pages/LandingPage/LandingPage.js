@@ -1,12 +1,14 @@
-import React from 'react'
-import Login from '../../components/Auth/Login/Login'
+import React from "react";
+import Navbar from "../../components/LandingPage/Navbar/Navbar";
+import Hero from "../../components/LandingPage/Hero/Hero";
 
 const LandingPage = () => {
   return (
-    <>
-    <Login/>
-    </>
-  )
-}
+    <div >
+      <Navbar />
+      <Hero />
+    </div>
+  );
+};
 
-export default LandingPage
+export default LandingPage;

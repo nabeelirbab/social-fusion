@@ -1,0 +1,37 @@
+
+.nav-main {
+  margin: 10px 160px 10px 160px;
+}
+.nav-logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: #ae6efe;
+}
+.nav-tab {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #231f20;
+  padding: 0px 40px 0px 40px;
+}
+.nav-main button {
+  background: linear-gradient(
+    180deg,
+    #ae6efe 0%,
+    #785ef9 139.76%,
+    #7155f7 220.99%
+  );
+  border-radius: 50px;
+  border: none;
+  color: white;
+  padding: 8px 30px 8px 30px;
+  font-family: "Arial";
+  font-weight: 700;
+}
+.nav-main a {
+  text-decoration: none;
+  font-family: "Arial";
+  color: #a56cfe;
+  padding-right: 10px;
+}

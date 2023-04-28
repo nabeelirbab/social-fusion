@@ -50,9 +50,4 @@ export class FacebookController {
   ) {
     return await this.facebookService.createPost(token);
   }
-
-  @Get('demo')
-  async demo() {
-    return await this.facebookService.testt();
-  }
 }
