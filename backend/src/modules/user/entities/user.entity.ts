@@ -45,6 +45,15 @@ export class User implements IUser {
   @Column({ nullable: true })
   password?: string;
 
+  @Column({ nullable: true })
+  firstName?: string;
+
+  @Column({ nullable: true })
+  lastName?: string;
+
+  @Column({ nullable: true })
+  userName?: string;
+
   @Column({
     type: `enum`,
     enum: UserStatusEnum,
@@ -114,5 +123,15 @@ export class User implements IUser {
 
   async setPassword(password: string) {
     this.password = password;
+  }
+
+  setFirstName(firstName: string) {
+    this.firstName = firstName;
+  }
+  setLastName(lastName: string) {
+    this.lastName = lastName;
+  }
+  setUserName(userName: string) {
+    this.userName = userName;
   }
 }

@@ -2,7 +2,13 @@ import { UserRoleEnum, UserStatusEnum, type IUser } from '@lib/types';
 import { ApiProperty } from '@nestjs/swagger';
 
 import { Trim } from 'class-sanitizer';
-import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MinLength,
+} from 'class-validator';
 
 export class UserRegisterRequestDto implements IUser {
   @Trim()
@@ -24,4 +30,28 @@ export class UserRegisterRequestDto implements IUser {
     description: 'Password for user. Must be 7 characters long.',
   })
   password: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: 'firstName',
+    description: 'firstName for user.',
+  })
+  firstName?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: 'lastName',
+    description: 'lastName for user.',
+  })
+  lastName?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: 'userName',
+    description: 'username for user.',
+  })
+  userName?: string;
 }
