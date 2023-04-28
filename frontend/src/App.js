@@ -12,6 +12,7 @@ import Sidebar from './components/Dashboard/Sidebar/sidebar';
 
 import Conversations from "./components/Linkedin/Conversations";
 import LinkedinConnect from "./components/Linkedin/connect";
+import ConnectTwitter from "./components/Twitter/twitter";
 
 function App() {
   const router = createBrowserRouter([
@@ -47,6 +48,10 @@ function App() {
     {
       path: "/connect-linkedin",
       element: <LinkedinConnect />,
+    },
+    {
+      path: "/connect-twitter",
+      element: <ConnectTwitter />,
     },
   ]);
   return (

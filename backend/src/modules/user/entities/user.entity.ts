@@ -18,6 +18,7 @@ import {
 import { Facebook } from 'src/modules/facebook/entities/facebook.entity';
 import { Linkedin } from 'src/modules/linkedin/entities/linkedin.entity';
 import { LinkedinChat } from 'src/modules/linkedin/entities/linkedinchat.entity';
+import { Twitter } from 'src/modules/twitter/entities/twitter.entity';
 @Entity({ name: `user` })
 export class User implements IUser {
   constructor(params?: IUserParams) {
@@ -31,7 +32,7 @@ export class User implements IUser {
 
   // PrimaryGeneratedColumn decorator create error it store in uuid but return string
   // which cause in cassandra that's why we are using transformer feature
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   readonly id: string;
 
   @Index()
@@ -84,6 +85,12 @@ export class User implements IUser {
     eager: true,
   })
   linkedin: Linkedin;
+
+  @OneToOne(() => Twitter, (twitter) => twitter.user, {
+    cascade: true,
+    eager: true,
+  })
+  twitter: Twitter;
 
   @OneToMany(() => LinkedinChat, (chat) => chat.sender)
   sentChats: LinkedinChat[];
