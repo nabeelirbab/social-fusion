@@ -26,7 +26,7 @@ const OAuthPopup = ({ url, onCode, onClose, callbackName, width = 500, height = 
         };
     }, [callbackName, onCode]);
 
-    return ( !connectLinkedinStatus ? <button onClick={handleClick}>Connect Profile</button> : 'Connected with Linkedin'
+    return ( !connectLinkedinStatus ? <button onClick={handleClick}>Connect Linkedin Profile</button> : 'Connected with Linkedin'
 );
 };
 

@@ -1,3 +1,4 @@
+import { UserService } from './../user/user.service';
 import { FacebookController } from './facebook.controller';
 // twitter.module.ts
 import { Module } from '@nestjs/common';
@@ -13,7 +14,7 @@ import { Facebook } from './entities/facebook.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([User, Facebook]), AuthModule],
   controllers: [FacebookController],
-  providers: [FacebookService],
+  providers: [FacebookService, UserService],
   // exports: [TwitterService],
 })
 export class FacebookModule {}

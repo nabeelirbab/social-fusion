@@ -34,4 +34,7 @@ export interface IUserParams {
   password?: string;
   role?: UserRoleEnum;
   disabled?: boolean;
+  firstName?: string;
+  lastName?: string;
+  userName?: string;
 }

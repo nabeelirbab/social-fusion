@@ -19,11 +19,6 @@ const SignUp = () => {
     lastName: "",
     userName:""
   });
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checked, setChecked] = useState(false);
 
@@ -60,6 +55,7 @@ const SignUp = () => {
           lastName: "",
           userName:""
         });
+        setConfirmPassword("")
       } else {
         alert("Please enter a valid credentials.");
       }

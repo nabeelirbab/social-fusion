@@ -27,7 +27,7 @@ async function bootstrap() {
   );
   app.enableCors({
     origin: 'http://localhost:3000',
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+    allowedHeaders: ['Origin, X-Requested-With, Content-Type, Accept', 'token'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   });
 
@@ -54,7 +54,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, swaggerDocument);
 
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors();
+  // app.enableCors();
   await app.listen(SERVER_PORT);
   logger.log(`Server is running on: ${await app.getUrl()}`);
 }
