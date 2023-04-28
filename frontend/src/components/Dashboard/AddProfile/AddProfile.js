@@ -1,52 +1,60 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddProfile.css";
-import FbImg from "../../../images/fb.png"
-import AddIcon from "../../../images/add.png"
+import FbImg from "../../../images/fb.png";
+import AddIcon from "../../../images/add.png";
 import FacebookLoginButton from "../../Facebook/facebook-login";
-import axios from 'axios'
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Linkedin from "../../Linkedin/linkedin";
 const AddProfile = () => {
-  const baseUrl='http://localhost:3300/api'
+  const baseUrl = "http://localhost:3300/api";
   const navigate = useNavigate();
   const [connectFBStatus, setConnectFBStatus] = useState(false)
   const [connectLinkedinStatus, setConnectLinkedinStatus] = useState(false)
    const accessToken = localStorage.getItem('token');
   const handleLoginSuccess = (response) => {
-    console.log(response)
-      axios.post(`${baseUrl}/facebook/connect-facebook`, { facebookId: response.userID, accessToken: response.accessToken,email:response.email,expiresIn:response.expiresIn },{
-        headers: {
-          token: accessToken
+    console.log(response);
+    axios
+      .post(
+        `${baseUrl}/facebook/connect-facebook`,
+        {
+          facebookId: response.userID,
+          accessToken: response.accessToken,
+          email: response.email,
+          expiresIn: response.expiresIn,
+        },
+        {
+          headers: {
+            token: accessToken,
+          },
         }
-})
-        .then((res) => {
-          toast.success('profile successfully added!')
-    })
-    .catch((error) => {
-      if (error.message === 'Request failed with status code 409') {
-        toast.error('Profile Already Added')
-      }
-      else {
-        toast.error('Could not add profile')
-
-      }
-    });
+      )
+      .then((res) => {
+        toast.success("profile successfully added!");
+      })
+      .catch((error) => {
+        if (error.message === "Request failed with status code 409") {
+          toast.error("Profile Already Added");
+        } else {
+          toast.error("Could not add profile");
+        }
+      });
   };
 
   const handleLoginFailure = () => {
-    toast.error('Login failed')
+    toast.error("Login failed");
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/");
     if (window.history && window.history.pushState) {
-      window.history.pushState('', null, './');
-      window.onpopstate = function() {
-        window.history.pushState('', null, './');
+      window.history.pushState("", null, "./");
+      window.onpopstate = function () {
+        window.history.pushState("", null, "./");
       };
     }
   };
@@ -93,8 +101,8 @@ const AddProfile = () => {
         <button onClickCapture={logout}>Logout</button>
 
         <div className="ap-card">
-            <div className="card-inner">
-                {/* <img src={FbImg} alt=""/>
+          <div className="card-inner">
+            {/* <img src={FbImg} alt=""/>
                 <img src={AddIcon} alt=""/> */}
             {!connectFBStatus ? <FacebookLoginButton onLoginSuccess={handleLoginSuccess} onLoginFailure={handleLoginFailure}/>: 'Connected with facebook'}
           </div>

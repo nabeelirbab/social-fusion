@@ -1,120 +1,70 @@
 .sidebar {
-  padding: 120px 20px 120px 20px;
-  width: 30%;
-  float: right;
-  background: #03b48a;
+  margin: 20px;
+  border-radius: 15px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #a66dfe;
+  height: 94.5vh;
 }
 .sidebar-inner {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
-.sidebar-inner img {
-  width: 200px;
+.login-img {
+  width: 100%;
+  height: auto;
 }
-.sidebar-inner p {
-  padding: 20px 0px 20px 0px;
-  color: white;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-}
-.sidebar-inner span {
-  font-family: "Rubik";
-  font-weight: bold;
-  font-size: 18px;
-}
-.img-name {
-  color: white;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
-}
-
 .login-main {
-  width: 40%;
-  margin: auto;
-  position: absolute;
-  top: 50%;
-  left: 35%;
-  transform: translate(-50%, -50%);
+  margin: 20px;
 }
 .login-inner {
-  text-align: center;
+  padding: 70px 80px;
 }
-.login-main label {
-  font-weight: 700;
-  font-size: 14px;
+.login-inner h5 {
+  font-weight: 500;
+  font-size: 30px;
 }
-.forgot {
+.login-inner p {
+  padding: 10px 0px 0px 0px;
+  margin: 0px;
+}
+.login-inner p Link {
+  font-weight: 600;
+  color: #a66dfe;
+}
+.form-main{
+  width: 70%;
+}
+.form-main .input {
+  width: 80%;
+  padding: 0px 0px 0px 10px;
+  border: none;
+  outline: none;
+}
+.form-main label {
+  color: #999999;
+}
+.password{
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 20px 0px -18px 0px;
 }
-.forgot a {
-  color: #03b48a;
-  text-decoration: none;
+.forgot-pass{
+  display: flex;
+  justify-content: space-between;
 }
-.login-main input {
-  width: 96.5%;
-  border: 1px solid #d6dae0;
-  border-radius: 4px;
-  padding: 10px;
-}
-.form-main .login-btn {
+.forgot-pass button{
   border: none;
-  margin-top: 20px;
+  color: #a66dfe;
+  background-color: #ffff;
+}
+.login-btn {
+  border: none;
+  margin-top: 40px;
   width: 100%;
-  background-color: #03b48a;
+  background-color: #a66dfe;
   border-radius: 60px;
   color: #ffff;
   padding: 12px;
-  font-family: "Open Sans";
-  font-weight: 800;
   font-size: 16px;
-  cursor: pointer;
-}
-.form-main span {
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #eaecef;
-  margin-top: 10px;
-}
-.form-main .fb-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  font-family: "Open Sans";
-  font-weight: 800;
-  font-size: 16px;
-  background: #1877f2;
-  border-radius: 60px;
-  border: none;
-  padding: 10px 70px;
-  cursor: pointer;
-}
-.fb-btn p {
-  padding-left: 10px;
-  color: white;
-  margin: 0px;
-}
-.signup {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-.signup p {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  margin: 0px;
-}
-.signup a {
-  font-size: 16px;
-  color: rgba(3, 180, 138, 1);
-  text-decoration: none;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
 }
