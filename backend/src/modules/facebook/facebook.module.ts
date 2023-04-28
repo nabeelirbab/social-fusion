@@ -8,6 +8,7 @@ import { AuthModule } from '../auth/auth.module';
 import { PassportModule } from '@nestjs/passport';
 import passport from 'passport';
 import { FacebookService } from './facebook.service';
+import { Facebook } from './entities/facebook.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User, Facebook]), AuthModule],
