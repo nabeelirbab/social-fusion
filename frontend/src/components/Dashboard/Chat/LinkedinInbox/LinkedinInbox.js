@@ -12,6 +12,7 @@ import GalleryIcon from "../../../../images/Inbox/Gallery.png";
 import AttachmentIcon from "../../../../images/Inbox/attachment.png";
 import GifIcon from "../../../../images/Inbox/gif.png";
 import EmojiIcon from "../../../../images/Inbox/emoji.png";
+import VideoModal from "../../../../components/Dashboard/VideoModal/VideoModal";
 
 const conversationsData = [
   {
@@ -150,7 +151,17 @@ const Inbox = () => {
   //   input.click();
   // }
 
-  
+  // Modal
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleVideoModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -159,9 +170,12 @@ const Inbox = () => {
           <div className="heading">
             <h2>Messaging</h2>
             <div>
-            <a href="/">
-                <img src={Settings} alt="" />
-              </a>
+              <img
+                style={{ cursor: "pointer" }}
+                onClick={handleVideoModal}
+                src={Settings}
+                alt=""
+              />
               <a href="/">
                 <img src={MessageIcon} alt="" />
               </a>
@@ -221,7 +235,12 @@ const Inbox = () => {
             </div>
             <div className="d-flex align-items-center">
               <img src={SettingIcon} alt="" />
-              <img src={CameraIcon} alt="" />
+              <img
+                style={{ cursor: "pointer" }}
+                onClick={handleVideoModal}
+                src={CameraIcon}
+                alt=""
+              />
               <img SRC={StarIcon} alt="" />
             </div>
           </div>
@@ -264,6 +283,7 @@ const Inbox = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && <VideoModal onClose={handleModalClose} />}
     </>
   );
 };
