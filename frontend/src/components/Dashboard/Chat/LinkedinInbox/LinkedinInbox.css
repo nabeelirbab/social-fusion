@@ -115,7 +115,7 @@
 }
 .message-container {
   height: 45vh;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .message {

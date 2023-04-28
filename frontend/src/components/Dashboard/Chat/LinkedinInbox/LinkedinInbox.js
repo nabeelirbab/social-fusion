@@ -136,27 +136,21 @@ const Inbox = () => {
 
   // Select file from Computer
 
-  const handleDirectorySelect = (event) => {
-    const files = event.target.files;
-    if (files.length > 0) {
-      setSelectedDirectory(files[0].path);
-    }
-  };
+  // const [file, setFile] = useState(null);
 
-  const [file, setFile] = useState(null);
+  // function handleFileChange(event) {
+  //   setFile(event.target.files[0]);
+  // }
 
-  function handleFileChange(event) {
-    setFile(event.target.files[0]);
-  }
+  // function handleButtonClick() {
+  //   const input = document.createElement("input");
+  //   input.type = "file";
+  //   input.accept = "image/*";
+  //   input.onchange = handleFileChange;
+  //   input.click();
+  // }
 
-  function handleButtonClick() {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.onchange = handleFileChange;
-    input.click();
-  }
-
+  
 
   return (
     <>
@@ -165,7 +159,7 @@ const Inbox = () => {
           <div className="heading">
             <h2>Messaging</h2>
             <div>
-              <a href="/">
+            <a href="/">
                 <img src={Settings} alt="" />
               </a>
               <a href="/">
@@ -251,12 +245,13 @@ const Inbox = () => {
             </div>
             <div className="attachments">
               <div>
-                <div>
+                {/* <div>
                   <button onClick={handleButtonClick}>
-                    <img src={GalleryIcon} alt="Gallery" />
+                    
                   </button>
                   {file && <p>Selected file: {file.name}</p>}
-                </div>
+                </div> */}
+                <img src={GalleryIcon} alt="Gallery" />
                 <img src={AttachmentIcon} alt="" />
                 <img src={GifIcon} alt="" />
                 <img src={EmojiIcon} alt="" />
@@ -265,16 +260,6 @@ const Inbox = () => {
                 <button onClick={handleSendMessage}>Send</button>
                 <img src={SettingIcon} />
               </div>
-              {/* <div>
-                <input
-                  type="file"
-                  webkitdirectory=""
-                  onChange={handleDirectorySelect}
-                />
-                {selectedDirectory && (
-                  <p>Selected directory: {selectedDirectory}</p>
-                )}
-              </div> */}
             </div>
           </div>
         </div>
