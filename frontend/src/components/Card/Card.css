@@ -1,0 +1,121 @@
+.card-container {
+  display: flex;
+}
+.card {
+  background: #ffffff;
+  border: 0.704964px solid #d9d9d9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #a66dfe;
+}
+.card-header img {
+  object-fit: contain;
+}
+.card-header h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0px;
+  color: #ffff;
+}
+.card-dashboard {
+  display: flex;
+}
+
+.card-sidebar {
+  width: 35%;
+  /* background-color: #a66dfe; */
+  border-right: 1px solid #d9d9d9;
+  text-align: center;
+}
+.card-sidebar h5 {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 0px 0px 0px;
+  margin: 0px;
+}
+.card-sidebar p {
+  font-size: 14px;
+  color: #8a8c95;
+  padding: 0px;
+}
+.toggle-button {
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.toggle-button.active {
+  background-color: #a66dfe;
+}
+
+.toggle-knob {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 2px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  transition: margin-left 0.2s ease-in-out;
+}
+
+.toggle-button.active .toggle-knob {
+  margin-left: 15px;
+}
+.timezone {
+  margin: 100px 0px 10px 0px;
+  /* padding: 50px 0px 10px 0px; */
+  color: #8a8c95;
+}
+.card-main {
+  flex: 1 1;
+}
+.card-main img {
+  object-fit: contain;
+  /* object-fit:none; */
+}
+.card-main .post {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.post span {
+  font-size: 14px;
+  padding-left: 5px;
+  font-family: Roboto;
+}
+.card-main .view-all {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.view-all span {
+  font-size: 14px;
+  padding-right: 5px;
+  font-family: Roboto;
+}
+.border {
+  border-bottom: 1px solid #d9d9d9;
+}
+.card-main button {
+  border: none;
+  background-color: white;
+}
+.card-main button:hover {
+  color: #a66dfe;
+}
+.card-header button{
+border: none;
+background-color: inherit;
+}
