@@ -1,11 +1,4 @@
-
 .addprofile-main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.addprofile-mains {
   width: 50%;
   margin: auto;
   position: absolute;
@@ -13,13 +6,9 @@
   left: 50%;
   /* transform: translate(-10%, -50%); */
 }
-.addprofile-inner p {
-  color: #697279;
-}
 .ap-card {
-  display: inline-block;
-  margin: 10px;
   width: 280px;
+  /* height: 173px; */
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
@@ -33,7 +22,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  color: #515e5f;
   text-align: center;
+  color: #515e5f;
   padding: 0px 0px 40px 0px;
 }
