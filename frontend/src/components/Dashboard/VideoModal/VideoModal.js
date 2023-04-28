@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import "./VideoModal.css";
 import CloseIcon from "../../../images/Inbox/close.png";
 import InstantIcon from "../../../images/Inbox/instant.png";
@@ -8,7 +8,6 @@ import LinkedinIcon from "../../../images/linkedIn.png";
 
 const Modal = ({ onClose }) => {
 
-    const [showNext, setShowNext] = useState(false);
 
   return (
     <div className="videomodal-overlay" onClick={onClose}>

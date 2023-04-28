@@ -82,7 +82,10 @@ function Sidebar() {
           </ul>
         </div>
       </div>
-      <div className="main-content">
+      {
+        
+      }
+      <div className={activeTab.id === "home"? "main-content-home" : "main-content"}>
         <div className="dash-header">
           {activeTab.id === "inbox" ? (
             <>

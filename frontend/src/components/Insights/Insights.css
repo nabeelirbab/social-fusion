@@ -11,8 +11,6 @@
 }
 .cal-card h1 {
   font-weight: 400;
-  font-family: Inter;
-  font-style: Regular;
 }
 .cal-card-inner {
   display: flex;

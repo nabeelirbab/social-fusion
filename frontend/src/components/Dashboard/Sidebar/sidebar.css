@@ -49,12 +49,17 @@ a:hover {
 }
 .main-content {
   flex: 1;
+  /* overflow-y: auto; */
+  background: rgba(3, 180, 138, 0.05);
+  padding: 20px;
+}
+.main-content-home {
+  flex: 1;
   overflow-y: auto;
   background: rgba(3, 180, 138, 0.05);
-
   padding: 20px;
-  /* any other styles for the main content */
 }
+
 .dash-header {
   padding: 0px 0px 20px 0px;
   display: flex;

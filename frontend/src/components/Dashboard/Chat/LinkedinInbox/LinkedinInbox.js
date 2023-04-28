@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./LinkedinInbox.css";
 import MessageIcon from "../../../../images/Inbox/message.png";
 import Settings from "../../../../images/Inbox/Oval.png";
@@ -52,7 +52,6 @@ const conversationsData = [
     message: "Thanks for your help!",
     date: new Date(),
   },
-  ,
   {
     id: 6,
     img: UserImg,
@@ -60,7 +59,6 @@ const conversationsData = [
     message: "Thanks for your help!",
     date: new Date(),
   },
-  ,
   {
     id: 7,
     img: UserImg,
@@ -84,7 +82,7 @@ const Inbox = () => {
 
   const handleFocus1 = () => {
     setIsFocused1(true);
-  };
+  };                      
 
   const handleBlur1 = () => {
     setIsFocused1(false);
@@ -133,9 +131,11 @@ const Inbox = () => {
     setMessages(newMessages);
     setNewMessage("");
   };
-  const [selectedDirectory, setSelectedDirectory] = useState(null);
 
   // Select file from Computer
+
+
+  // const [selectedDirectory, setSelectedDirectory] = useState(null);
 
   // const [file, setFile] = useState(null);
 
@@ -227,7 +227,7 @@ const Inbox = () => {
             </div>
           ))}
         </div>
-        <div className="col-9">
+        <div className="col-9 overflow-hidden ">
           <div className="inbox-header">
             <div>
               <h5>Andrew Martin </h5>
@@ -254,6 +254,8 @@ const Inbox = () => {
                 />
               ))}
             </div>
+          </div>
+          <div className="chatting">
             <div className="input-container">
               <input
                 type="text"
@@ -277,7 +279,7 @@ const Inbox = () => {
               </div>
               <div>
                 <button onClick={handleSendMessage}>Send</button>
-                <img src={SettingIcon} />
+                <img src={SettingIcon} alt=""/>
               </div>
             </div>
           </div>
