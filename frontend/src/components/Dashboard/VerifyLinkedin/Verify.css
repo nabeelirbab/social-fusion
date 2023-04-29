@@ -1,0 +1,33 @@
+.verify-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+  width: 20%;
+}
+.logo-linkedin {
+  padding: 20px 0px 20px 20px;
+}
+.verify-main h4{ 
+    text-align: center;
+}
+.verify-main p{
+    font-size: 12px;
+    margin: 0px;
+}
+.verify-main input{
+    width: 100%;
+    margin-top: 20px;
+    padding: 5px;
+}
+.verify-main button {
+    margin: 10px 0px;
+    background-color: #0A66C2;
+    color: #ffff;
+    border: none;
+    border-radius: 28px;
+    padding: 10px 30px;
+}

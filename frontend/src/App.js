@@ -4,16 +4,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import AddProfile from "./components/Dashboard/AddProfile/AddProfile";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './components/Auth/Login/Login';
-import { ToastContainer } from 'react-toastify';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./components/Auth/Login/Login";
+import { ToastContainer } from "react-toastify";
 import Linkedin from "./components/Linkedin/linkedin";
-import Sidebar from './components/Dashboard/Sidebar/sidebar';
+import Sidebar from "./components/Dashboard/Sidebar/sidebar";
 
 import Conversations from "./components/Linkedin/Conversations";
 import LinkedinConnect from "./components/Linkedin/connect";
 import ConnectTwitter from "./components/Twitter/twitter";
 import Inbox from "./components/Dashboard/Chat/LinkedinInbox/LinkedinInbox";
+import VerifyLinkedin from "./components/Dashboard/VerifyLinkedin/VerifyLinkedin";
 
 function App() {
   const router = createBrowserRouter([
@@ -57,6 +58,10 @@ function App() {
     {
       path: "/linkedin-inbox",
       element: <Inbox />,
+    },
+    {
+      path: "/linkedin-verify",
+      element: <VerifyLinkedin />,
     },
   ]);
   return (
