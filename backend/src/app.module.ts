@@ -1,3 +1,5 @@
+import { FacebookModule } from './modules/facebook/facebook.module';
+import { LinkedinModule } from './modules/linkedin/linkedin.module';
 import { TwitterModule } from './modules/twitter/twitter.module';
 import { Module } from '@nestjs/common';
 // config imports
@@ -32,6 +34,8 @@ import jwtConfig from '@config/jwtConfig';
     }),
     AuthModule,
     UserModule,
+    LinkedinModule,
+    FacebookModule,
     TwitterModule,
   ],
   controllers: [],

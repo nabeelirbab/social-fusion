@@ -15,12 +15,10 @@ const SignUp = () => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
+    firstName: "",
+    lastName: "",
+    userName:""
   });
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checked, setChecked] = useState(false);
 
@@ -38,39 +36,44 @@ const SignUp = () => {
     setIsModalOpen(false);
   };
 
-  // const baseUrl = "http://localhost:3300/api";
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   if (credentials.email === businessEmail) {
-  //     if (validateCredentials(credentials)) {
-  //       setCredentials({
-  //         email: credentials.email,
-  //         password: credentials.password,
-  //       });
-  //       handleSignUp();
-  //       setCredentials({
-  //         email: "",
-  //         password: "",
-  //       });
-  //       setBusinessEmail("");
-  //     } else {
-  //       alert("Please enter a valid email address.");
-  //     }
-  //   } else {
-  //     alert("Emails not matched");
-  //   }
-  // }
+  const baseUrl = "http://localhost:3300/api";
+  function handleSubmit(event) {
+    event.preventDefault();
+      if (validateCredentials(credentials) && credentials.password===confirmPassword) {
+        setCredentials({
+          email: credentials.email,
+          password: credentials.password,
+          firstName:credentials.firstName,
+          lastName:credentials.lastName,
+          userName:credentials.userName
+        });
+        handleSignUp();
+        setCredentials({
+          email: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          userName:""
+        });
+        setConfirmPassword("")
+      } else {
+        alert("Please enter a valid credentials.");
+      }
+    
+  }
 
-  // const handleSignUp = async () => {
-  //   try {
-  //     const res = await axios.post(`${baseUrl}/auth/register`, credentials);
-  //     if (res.data) {
-  //       toast.success(`${res.data.message}`);
-  //     }
-  //   } catch (error) {
-  //     toast.error("Registration failed");
-  //   }
-  // };
+  const handleSignUp = async () => {
+    try {
+      const res = await axios.post(`${baseUrl}/auth/registerUser`, credentials);
+      if (res.data) {
+        toast.success(`${res.data.message}`);
+            setIsModalOpen(true);
+
+      }
+    } catch (error) {
+      toast.error("Registration failed");
+    }
+  };
   return (
     <>
       <div className="signup-main">
@@ -99,8 +102,8 @@ const SignUp = () => {
                 <input
                   className="input"
                   type="name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  value={credentials.firstName}
+                  onChange={(e) => setCredentials({ ...credentials,firstName:e.target.value })}
                   placeholder="Enter Your First Name"
                 />
               </div>
@@ -118,8 +121,8 @@ const SignUp = () => {
                 <input
                   className="input"
                   type="name"
-                  value={lastName}
-                  onChange={(e) => setlastName(e.target.value)}
+                  value={credentials.lastName}
+                  onChange={(e) => setCredentials({ ...credentials,lastName:e.target.value })}
                   placeholder="Enter Your last Name"
                 />
               </div>
@@ -136,8 +139,8 @@ const SignUp = () => {
                   <input
                     className="input"
                     type="name"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
+                    value={credentials.userName}
+                  onChange={(e) => setCredentials({ ...credentials,userName:e.target.value })}
                     placeholder="Enter Username"
                   />
                 </div>
@@ -156,8 +159,8 @@ const SignUp = () => {
                 <input
                   className="input"
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={credentials.email}
+                  onChange={(e) => setCredentials({ ...credentials,email:e.target.value })}
                   placeholder="Enter Your Email Address"
                 />
               </div>
@@ -176,8 +179,8 @@ const SignUp = () => {
                 <input
                   className="input"
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={credentials.password}
+                  onChange={(e) => setCredentials({ ...credentials,password:e.target.value })}
                   placeholder="Enter Your Password"
                 />
               </div>
@@ -224,7 +227,7 @@ const SignUp = () => {
               </div>
             </div>
             {/* <button className="signup-btn">Login</button> */}
-            <div className="signup-btn" onClick={handleAddProfileClick}>
+            <div className="signup-btn" onClick={handleSubmit}>
               Register
             </div>
           </form>

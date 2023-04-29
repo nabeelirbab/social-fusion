@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Instagram.css";
 import NewPostIcon from "../../../../images/Inbox/new-post.png";
 import InstaUser from "../../../../images/Inbox/instaUser.png";
 import DirectMsgIcon from "../../../../images/Inbox/directMsg.png";
+import InstaModal from "../../InstagramModal/InstaModal";
 
 const ConversationData = [
   {
@@ -53,9 +54,30 @@ const ConversationData = [
     name: "Cosmo",
     message: "That's look interesting",
   },
+  {
+    id:9,
+    img:InstaUser,
+    name:"Jack Lee",
+    message:"Thanks Paul for reaching out"
+  }
 ];
 
+const InboxList = [
+  {
+    name:"const"
+  }
+]
 const InstagramInbox = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleVideoModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <div className="instachat-main">
@@ -64,6 +86,7 @@ const InstagramInbox = () => {
             <h5 className="">Alexandar</h5>
             <img
               style={{ cursor: "pointer" }}
+              onClick={handleVideoModal}
               src={NewPostIcon}
               alt=""
               className="img-fluid"
@@ -88,6 +111,7 @@ const InstagramInbox = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && <InstaModal onClose={handleModalClose} />}
     </>
   );
 };

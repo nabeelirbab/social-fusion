@@ -15,10 +15,10 @@ import {
   UserRoleEnum,
   SocialProviderEnum,
 } from '@lib/types';
-import { Facebook } from 'src/modules/facebook/entities/facebook.entity';
 import { Linkedin } from 'src/modules/linkedin/entities/linkedin.entity';
 import { LinkedinChat } from 'src/modules/linkedin/entities/linkedinchat.entity';
 import { Twitter } from 'src/modules/twitter/entities/twitter.entity';
+import { Facebook } from 'src/modules/facebook/entities/facebook.entity';
 @Entity({ name: `user` })
 export class User implements IUser {
   constructor(params?: IUserParams) {
@@ -26,7 +26,10 @@ export class User implements IUser {
       this.email = params.email;
       if (params.status) this.setStatus(params.status);
       if (params.role) this.setRole(params.role);
-      if (params.disabled === false) this.disabled = params.disabled;
+      if (params.status) this.setStatus(params.status);
+      if (params.firstName) this.setFirstName(params.firstName);
+      if (params.lastName) this.setLastName(params.lastName);
+      if (params.userName) this.setUserName(params.userName);
     }
   }
 
@@ -44,6 +47,15 @@ export class User implements IUser {
 
   @Column({ nullable: true })
   password?: string;
+
+  @Column({ nullable: true })
+  firstName?: string;
+
+  @Column({ nullable: true })
+  lastName?: string;
+
+  @Column({ nullable: true })
+  userName?: string;
 
   @Column({
     type: `enum`,
@@ -114,5 +126,15 @@ export class User implements IUser {
 
   async setPassword(password: string) {
     this.password = password;
+  }
+
+  setFirstName(firstName: string) {
+    this.firstName = firstName;
+  }
+  setLastName(lastName: string) {
+    this.lastName = lastName;
+  }
+  setUserName(userName: string) {
+    this.userName = userName;
   }
 }

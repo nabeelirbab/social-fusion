@@ -212,7 +212,6 @@ export class LinkedinService {
     const decoded = await this.helper.decode(accessToken as string); // verify access token and get user from db
     const sender = decoded ? await this.helper.validateUser(decoded) : null;
     if (chat) {
-      console.log('hi');
       await this.linkedinChatRepository.save({
         sender,
         receiverProfileId: profileId,

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getChats, getChat } from "./helperFunctions";
-import ln from '../../images/LinkedIn-Symbole.png'
+// import ln from '../../images/LinkedIn-Symbole.png'
 import Chat from "./chat";
 
 export default function Conversations() {
@@ -70,7 +70,7 @@ export default function Conversations() {
                   {
                      profilePic ?( 
                           <img src={profilePic} alt={`${name} profile`} />) 
-                          : <img src={ln} style={{height:99,width:100}} alt={`${name} profile`} />
+                          : <img src={''} style={{height:99,width:100}} alt={`${name} profile`} />
                   }
               <span>{name}</span>
             </div>
