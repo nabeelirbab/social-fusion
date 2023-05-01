@@ -53,8 +53,14 @@ hr {
   margin: 10px;
   padding: 8px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+.instamodal-search p{
+  display: inline-block;
+  font-size: 12px;
+  padding: 0px 8px 0px 8px;
+  margin: 0px 0px 0px 8px;
+  background-color: rgba(24, 119, 242, 0.1);;
 }
 .instamodal-search input {
   padding-left: 10px;

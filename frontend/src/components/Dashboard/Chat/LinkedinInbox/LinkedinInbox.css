@@ -106,31 +106,6 @@
   width: 50px;
   border-radius: 50px;
 }
-.spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 24px;
-}
-.small-spinner {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  border: 2px solid #ccc;
-  border-top-color: #0073b1;
-  border-radius: 50%;
-  animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .inbox-header {
   display: flex;

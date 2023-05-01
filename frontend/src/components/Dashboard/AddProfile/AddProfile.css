@@ -5,6 +5,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.addprofile-header p{
+  text-align: center;
+  color:#515E5F;
+}
+.addprofile-header span{
+  color: #a66dfe;
+}
+.kep-login-facebook.metro{
+  border-radius: 5px;
+  font-size: 12px;
+}
 .addprofile-mains {
   width: 50%;
   margin: auto;
@@ -17,7 +28,7 @@
   color: #697279;
 }
 .ap-card {
-  display: inline-block;
+  display: flex;
   margin: 10px;
   width: 280px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -25,15 +36,10 @@
 }
 .card-inner {
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content: center;
+  padding: 36px;
 }
-.ap-card p {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  color: #515e5f;
-  text-align: center;
-  padding: 0px 0px 40px 0px;
+.linkedin-btn{
+  border: none;
+  background-color: #a66dfe;
 }

@@ -3,9 +3,10 @@ import CloseIcon from "../../../images/Inbox/close.png";
 import "./InstaModal.css";
 import InstaUser from "../../../images/Inbox/instaUser.png";
 
+
 const InstaModal = ({ onClose }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeConversation, setActiveConversation] = useState(null);
+  const [selectedNames, setSelectedNames] = useState([]);
 
   const ConversationData = [
     {
@@ -35,7 +36,7 @@ const InstaModal = ({ onClose }) => {
     {
       id: 5,
       img: InstaUser,
-      name: "Emiley",
+      name: "Donald",
       message: "Sure, no Problem",
     },
   ];
@@ -44,8 +45,16 @@ const InstaModal = ({ onClose }) => {
     conversation.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleConversationClick = (id) => {
-    setActiveConversation(id);
+  const handleConversationClick = (name) => {
+    if (selectedNames.includes(name)) {
+      // If the name is already selected, remove it from the selectedNames array
+      setSelectedNames(
+        selectedNames.filter((selectedName) => selectedName !== name)
+      );
+    } else {
+      // If the name is not selected, add it to the selectedNames array
+      setSelectedNames([...selectedNames, name]);
+    }
   };
 
   return (
@@ -62,12 +71,17 @@ const InstaModal = ({ onClose }) => {
           </div>
           <hr />
           <div className="instamodal-search">
-            <span>To: </span>
-            <input
-              placeholder="search...."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+            <span>To:</span>
+            <div>
+              {selectedNames.map((name) => (
+                <p key={name}>{name}</p>
+              ))}
+              <input
+                placeholder="search...."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
           </div>
           <div className="suggest">
             <h5>Suggested</h5>
@@ -82,9 +96,9 @@ const InstaModal = ({ onClose }) => {
                 </div>
                 <button
                   className={`round-select-button ${
-                    activeConversation === conversation.id ? "active" : ""
+                    selectedNames.includes(conversation.name) ? "active" : ""
                   }`}
-                  onClick={() => handleConversationClick(conversation.id)}
+                  onClick={() => handleConversationClick(conversation.name)}
                 />
               </div>
             ))}

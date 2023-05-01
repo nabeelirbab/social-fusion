@@ -6,7 +6,7 @@
 }
 .left-inbox {
   border-right: 1px solid rgb(217, 217, 217);
-  overflow-y:auto;
+  overflow-y: auto;
 }
 .header {
   display: flex;
@@ -15,9 +15,9 @@
   padding: 10px;
   border-bottom: 1px solid rgb(217, 217, 217);
 }
-.header h5{
-    font-size: 16px;
-    margin: 0px;
+.header h5 {
+  font-size: 16px;
+  margin: 0px;
 }
 .header img {
   object-fit: contain;
@@ -41,22 +41,43 @@
   color: #8a8c95;
   padding: 0px 5px;
 }
-.new-message{
-    display: grid;
-    text-align: center;
-    align-items: center;
+.new-message {
+  display: grid;
+  text-align: center;
+  align-items: center;
 }
-.new-message h5{
-    font-size: 16px;
-    font-weight: 500;
+.new-message h5 {
+  font-size: 16px;
+  font-weight: 500;
 }
-.new-message p{
-    font-size: 14px;
+.new-message p {
+  font-size: 14px;
 }
-.new-message button{
-    background-color: #a66dfe;
-    color: #ffff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+.new-message button {
+  background-color: #a66dfe;
+  color: #ffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.instabox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(217, 217, 217);
+  padding: 10px;
+}
+.instabox-header p {
+  margin: 0px;
+}
+.instabox-header h5 {
+  margin: 0px;
+  font-size: 16px;
+}
+.instabox-header p {
+  font-size: 14px;
+}
+.instabox-header img {
+  height: 20px;
+  padding: 0px 0px 0px 10px;
 }
