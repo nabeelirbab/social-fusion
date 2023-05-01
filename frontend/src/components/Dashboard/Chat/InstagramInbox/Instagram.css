@@ -81,3 +81,83 @@
   height: 20px;
   padding: 0px 0px 0px 10px;
 }
+.insta-messaging-template {
+  padding: 10px;
+}
+.insta-message-container {
+  height: 55vh;
+  overflow-y: scroll;
+}
+
+.insta-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.insta-input-container input {
+  border: 1px solid rgb(217, 217, 217);
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 16px;
+  margin: 5px 0px 0px 0px;
+  border-radius: 36px;
+}
+
+.insta-input-container button {
+  height: 40px;
+  width: 80px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 20px;
+}
+.insta-input-container input:focus {
+  outline: #a66dfe;
+}
+.insta-input-container input::placeholder {
+  color: #8e8e93;
+  font-size: 12px;
+}
+.insta-attachments {
+  padding: 10px 0px 0px 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.insta-attachments button {
+  color: #a1a5b7;
+  padding: 2px 20px;
+  border-radius: 5px;
+  border: 1px solid #a1a5b7;
+  background-color: rgba(161, 165, 183, 0.2);
+}
+.insta-user-message {
+  padding-right: 5px;
+  text-align: right;
+}
+
+.insta-other-message {
+  text-align: left;
+}
+
+.insta-message p {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.insta-user-message p {
+  background-color: #c0c1c5;
+  border-radius: 36px;
+  margin: 0px;
+  color: black;
+}
+
+.insta-other-message p {
+  color: black;
+  background-color: #ffff;
+  border-radius: 36px;
+  border: 1px solid #a1a5b7;
+  margin: 0px;
+}

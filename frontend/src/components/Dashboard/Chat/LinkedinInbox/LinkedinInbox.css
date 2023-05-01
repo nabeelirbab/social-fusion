@@ -135,7 +135,7 @@
 
 .message {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 .chatting {
   padding: 0px 10px 10px 10px;
@@ -151,7 +151,7 @@
 
 .message p {
   display: inline-block;
-  padding: 10px;
+  padding: 6px 10px;
   border-radius: 5px;
   font-size: 16px;
 }

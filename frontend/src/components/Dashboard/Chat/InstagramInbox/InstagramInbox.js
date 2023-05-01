@@ -64,6 +64,14 @@ const ConversationData = [
   },
 ];
 
+function Message({ text, isUser }) {
+  return (
+    <div className={`message ${isUser ? "insta-user-message" : "insta-other-message"}`}>
+      <p>{text}</p>
+    </div>
+  );
+}
+
 const InstagramInbox = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chat, setChat] = useState(false);
@@ -80,6 +88,22 @@ const InstagramInbox = () => {
     setChat(true);
   };
 
+  // Message functions
+  const [messages, setMessages] = useState([
+    { text: "Hi there!", isUser: false },
+    { text: "Hey! How are you?", isUser: true },
+    { text: "I'm doing well, thanks. How about you?", isUser: false },
+    { text: "Good, thanks for asking.", isUser: true },
+  ]);
+  const [newMessage, setNewMessage] = useState("");
+  const handleNewMessage = (event) => {
+    setNewMessage(event.target.value);
+  };
+  const handleSendMessage = () => {
+    const newMessages = [...messages, { text: newMessage, isUser: true }];
+    setMessages(newMessages);
+    setNewMessage("");
+  };
   return (
     <>
       <div className="instachat-main">
@@ -120,6 +144,28 @@ const InstagramInbox = () => {
                     alt=""
                   />
                   <img src={InstaInfoIcon} alt="" />
+                </div>
+              </div>
+              <div className="insta-messaging-template">
+                <div className="insta-message-container">
+                  {messages.map((message, index) => (
+                    <Message
+                      key={index}
+                      text={message.text}
+                      isUser={message.isUser}
+                    />
+                  ))}
+                </div>
+                <div className="insta-input-container">
+                  <input
+                    type="text"
+                    placeholder="Write a message..."
+                    value={newMessage}
+                    onChange={handleNewMessage}
+                  />
+                </div>
+                <div className="insta-attachments">
+                  <button onClick={handleSendMessage}>Send</button>
                 </div>
               </div>
             </div>
