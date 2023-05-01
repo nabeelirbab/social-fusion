@@ -1,0 +1,91 @@
+.twitter-main {
+  border: 1px solid rgb(217, 217, 217);
+  height: 75vh;
+  display: flex;
+  background-color: #ffff;
+  /* overflow: hidden; */
+}
+.leftInbox-twitter {
+  border-right: 1px solid rgb(217, 217, 217);
+  overflow-y: auto;
+}
+.leftInbox-twitter .heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: baseline;
+  border-bottom: 1px solid rgb(217, 217, 217);
+}
+.heading button {
+  border: none;
+}
+.heading img {
+  padding-left: 5px;
+  object-fit: contain;
+}
+.header-twitter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.twitter-search {
+  margin: 10px;
+  padding: 5px 8px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.03);
+  align-items: center;
+  border-radius: 30px;
+}
+.twitter-search input {
+  padding-left: 10px;
+  border: none;
+  background-color: inherit;
+  color: #8e8e93;
+}
+.twitter-search input::placeholder {
+  color: #8e8e93;
+  font-size: 12px;
+}
+.twitter-search input:focus {
+  outline: none;
+  border: none;
+}
+.twitter-conversations {
+  display: flex;
+  align-items: center;
+  padding: 10px 8px;
+}
+.twitter-conversations img {
+  height: 50px;
+}
+.twitter-conversations h5 {
+  font-size: 14px;
+  padding: 0px 5px;
+  margin: 0px;
+}
+.twitter-conversations span {
+  font-size: 12px;
+  color: #8a8c95;
+  padding: 0px 5px;
+}
+.twitter-new-message {
+  display: grid;
+  text-align: center;
+  align-items: center;
+}
+.twitter-new-message h5 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.twitter-new-message p {
+  font-size: 14px;
+}
+.twitter-new-message button {
+  background-color: #a66dfe;
+  color: #ffff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+}

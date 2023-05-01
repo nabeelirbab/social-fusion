@@ -129,6 +129,7 @@ const InstagramInbox = () => {
           ))}
         </div>
 
+      
         {chat === true ? (
           <>
             <div className="col-9">

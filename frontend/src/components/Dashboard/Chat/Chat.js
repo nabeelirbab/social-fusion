@@ -3,6 +3,7 @@ import "./chat.css";
 import Facebook from "./FacebookInbox/FacebookInbox";
 import LinkedinInbox from "./LinkedinInbox/LinkedinInbox";
 import InstagramInbox from "./InstagramInbox/InstagramInbox"
+import TwitterInbox from "./TwitterInbox/TwittterInbox"
 
 const Chat = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -21,7 +22,7 @@ const Chat = () => {
     {
       id: 2,
       title: "Twitter",
-      //   component: <Twitter />,
+        component: <TwitterInbox />,
     },
     {
       id: 3,
