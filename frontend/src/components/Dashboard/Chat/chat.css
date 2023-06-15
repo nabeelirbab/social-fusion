@@ -20,3 +20,7 @@
 .chat-main button.non-active{
     border: none;
 }
+.chat-img{
+  height: 200px;
+  width: 200px;
+}

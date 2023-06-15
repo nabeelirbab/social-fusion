@@ -20,7 +20,8 @@ const Linkedin = ({connectLinkedinStatus}) => {
     }
     useEffect(() => {
       getProfile(token)
-    },[])
+    }, [])
+ 
 
     const handleLinkedInLogin = async (accessToken) => {
         const token = localStorage.getItem('linkedin_token')
