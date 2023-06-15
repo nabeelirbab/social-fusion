@@ -533,4 +533,33 @@ export class LinkedinService {
       throw new HttpException('profile not found!', HttpStatus.NOT_FOUND);
     }
   }
+
+  async getVideo(urn, @Res() res) {
+    console.log(urn);
+    const headers = {
+      Authorization: `Bearer AQUKrzPH1Iv_8htKSyJy2DUkw5QPbIy_gMT708CiFyKG_fdDmsQntn4u4L0sF8JjAWoh9croVMk4FJxZM_mLaRGQjoAA_Hjt8mbpCfSORysVVMPffh7XPllZ-LFnUmxZhYsXFkxJtY4c108-OAfrCJLV1hXnvT2xY8eOLdE5oE6rGq7EJk_eu45KP8OM40PXghjjtCJbz33pnbmGzrpHYgGDaAEB6RJ3mngYn91Qi-0qMwpTnPCHtPsgTRd0eqp9YWyu6RvffZlbCpr2C4JwW-MIcqwW5viE1GimrOnnoGruy4Y-KaYDf-ozD64p6IDNt90bvLtCbMS0_oRXVzpfcrXAP46HJQ`,
+      'Content-Type': 'application/json',
+      // 'X-Restli-Protocol-Version': '202204.01', // Add LinkedIn-Version header
+      'LinkedIn-Version': '202210',
+    };
+    // const userProfile = await this.getUserProfile(accessToken);
+    // const userUrn = userProfile.id;
+    try {
+      const response = await axios.get(
+        `https://api.linkedin.com/rest/videos/${urn}`,
+        {
+          headers,
+        }
+      );
+      if (response) {
+        // res.json({ success: true });
+        console.log(response.data);
+        // return res;
+      }
+    } catch (error) {
+      console.error('Error posting article:', error.response);
+      // throw error;
+      res.send(error);
+    }
+  }
 }

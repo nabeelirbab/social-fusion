@@ -1,5 +1,6 @@
 import React, { useState ,useEffect,useRef} from "react";
 import "./LinkedinInbox.css";
+import '../chat.css'
 import MessageIcon from "../../../../images/Inbox/message.png";
 import Settings from "../../../../images/Inbox/Oval.png";
 import SearchIcon from "../../../../images/Inbox/SearchIcon.png";
@@ -15,6 +16,8 @@ import EmojiIcon from "../../../../images/Inbox/emoji.png";
 import VideoModal from "../../VideoModal/VideoModal";
 import { getChats,getChat,sendChat } from "../../../Linkedin/helperFunctions";
 import ln from '../../../../images/Landing/LinkedIn-Symbole.png'
+import axios from "axios";
+import { getVideo } from "../../../Linkedin/helperFunctions";
 const conversationsData = [
   {
     id: 1,
@@ -71,14 +74,35 @@ const conversationsData = [
   },
 ];
 
-function Message({ text, isUser,fromMe }) {
+
+function Message({ text, fromMe, img, videoUrl }) {
+  getVideo('urn:li:digitalmediaAsset:D4D23AQGHxqrLfJFTrw')
+
   const className = fromMe
     ? "message user-message"
     : "message other-message";
 
   return (
     <div className={className}>
-      <p>{text}</p>
+      {console.log(videoUrl)}
+      {/* {videoUrl && 
+      } */}
+      {
+        text &&
+        <p>{text}</p>
+      }
+      {
+        img &&
+        // eslint-disable-next-line jsx-a11y/img-redundant-alt
+        <img src={img} alt='image' className="chat-img" />
+      }
+      {videoUrl && (
+    <video video width="320" height="240" controls>
+      <source src={videoUrl} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+)}
+
     </div>
   );
 }
@@ -90,7 +114,10 @@ const Inbox = () => {
     const [selectedConversation, setSelectedConversation] = useState(null);
   const [messages, setMessages] = useState([]);
     const messagesEndRef = useRef(null);
-
+  const getVideoUrl=async (urn)=>{
+    const res =await axios.get(` https://api.linkedin.com/rest/videos/${urn}`)
+    console.log('>>>>>',res);
+  }
 
   const handleFocus1 = () => {
     setIsFocused1(true);
@@ -222,6 +249,8 @@ async function handleSendMessage(profileId) {
       }
     }
   };
+  const reversedMessages = messages?.slice().reverse();
+
 
  return (
   <>
@@ -317,10 +346,11 @@ async function handleSendMessage(profileId) {
         <div className="col-9">
           <div className="inbox-header">
              <div>
+               {selectedConversation?.conversation?.participants[0]?.profileId}
               <h5>{selectedConversation?.conversation?.participants[0]?.firstName} {selectedConversation.conversation?.participants[0]?.lastName}</h5>
-              <p>Hr Execute</p>
+              {/* <p>Hr Execute</p> */}
             </div>
-            <div className="d-flex align-items-center">
+            {/* <div className="d-flex align-items-center">
               <img src={SettingIcon} alt="" />
               <img
                 style={{ cursor: "pointer" }}
@@ -329,22 +359,28 @@ async function handleSendMessage(profileId) {
                 alt=""
               />
               <img SRC={StarIcon} alt="" />
-            </div>
+            </div> */}
           </div>
           <div className="messaging-template">
             <div className="message-container">
-             {messages
-    ?.filter((message) => message?.text && message?.text?.trim())
-    ?.reverse()
+               {reversedMessages
     ?.map((message) => {
       const { text, sentFrom } = message;
       const fromMe = (sentFrom?.profileId || "") !== selectedConversation?.profileId;
+      const isVideo = message?.eventContent?.mediaAttachments?.[0]?.mediaType === 'VIDEO';
+      console.log('>>>>',isVideo);
+      const videoUrl = isVideo ? message?.eventContent?.mediaAttachments?.[0]['*videoPlayMetadata'] : null;
+      // const urn=getVideoUrl('urn:li:digitalmediaAsset:D4D23AQGHxqrLfJFTrw')
+
+      console.log('>>>>',videoUrl);
 
       return (
         <Message
           key={message.messageId}
           text={text}
+          img={message?.eventContent?.attachments?.[0]?.reference}
           fromMe={fromMe}
+          videoUrl={videoUrl}
         />
       );
     })}
@@ -360,10 +396,10 @@ async function handleSendMessage(profileId) {
         </div>
         <div className="attachments">
           <div>
-            {/* <img src={GalleryIcon} alt="Gallery" />
+                 {/* <img src={GalleryIcon} alt="Gallery" />
             <img src={AttachmentIcon} alt="" />
-            <img src={GifIcon} alt="" />
-            <img src={EmojiIcon} alt="" /> */}
+  <img src={GifIcon} alt="" />*/}
+             {/* <img src={EmojiIcon} alt="" />  */}
           </div>
                <div>
             <button onClick={()=>handleSendMessage(selectedConversation?.conversation?.participants[0]?.profileId)}>Send</button>

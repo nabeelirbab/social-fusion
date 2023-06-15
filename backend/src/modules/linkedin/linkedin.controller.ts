@@ -113,4 +113,15 @@ export class LinkedinController {
   ) {
     return await this.linkedinService.sendMessage(profileId, accessToken, msg);
   }
+
+  @Get('video/:id')
+  async getvideo(
+    // @Body('urn') urn: string,
+    @Param('id') urn: string,
+    @Res() res
+  ) {
+    console.log(urn);
+    // console.log(urn);
+    return await this.linkedinService.getVideo(urn, res);
+  }
 }

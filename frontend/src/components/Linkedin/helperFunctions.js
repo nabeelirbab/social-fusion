@@ -74,3 +74,35 @@ export async function sendChat(profileId,msg) {
         console.log('error / invalid credentials')
     }
 }
+
+ export const getVideo = async (urn) => {
+     const token = localStorage.getItem('linkedin_token')
+     let accessToken;
+        if (token) {
+            accessToken = token
+        }
+        if (!accessToken) {
+            if (token) {
+                accessToken=token   
+            }
+        }
+     try {
+         const response = await axios(`http://localhost:3300/api/linkedin/video/${urn}`, 
+             {
+                 method: 'GET',
+      }
+        
+      );
+        console.log(response);
+       if (response) {
+         console.log(response.dat)
+          // console.log('Post Created Successfully');
+          // toast.success('Post Created Successfully')
+      }
+      else {
+        toast.error('Error posting article');
+      }
+    } catch (error) {
+      toast.error(error);
+    }
+  }
